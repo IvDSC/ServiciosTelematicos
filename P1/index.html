@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Proyecto Práctica 1</title>>
+        <style type="text/css">
+            .Título{
+                background-color: #0000ff;
+                color:azure;
+                text-align: center;
+                margin: 5px;
+            }
+            .Fondo{
+                background-color: #42ff2d;
+                overflow: hidden;
+                text-align: center;
+                margin: 5px;
+            }
+            nav{
+                background-color: #04fff7;
+                text-align: center;
+                margin:20px;
+                width: 90px;
+                height: 20px;
+                float:left;
+            }
+            nav a{
+                color: #000;
+                text-decoration: none;
+            }
+            aside{
+                background-color: rgb(233, 255, 91);
+                font-weight: bold;
+                text-align: center;
+                margin:20px;
+                width: 90px;
+                height: 20px;
+                text-align: center;
+                float: right;
+            }
+            .Datoshabitación{
+                font-weight: bold;
+                background-color: #fb66ea;
+                text-align: center;
+                list-style-position: inside;
+                margin: 5px;
+                width:calc(50% - 10px);
+                float: left;
+                height: 650px;
+            }
+            .Datoshabitación a{
+                text-decoration: none;
+                color:aqua;
+            }
+            .Datoshabitación img {
+                max-width: 50%;
+                height: auto;
+            }
+
+            .Datosesores{
+                text-align: center;
+                color:aqua;
+                font-weight: bold;
+                background-color: #fb66ea;
+                margin: 5px;
+                width: calc(50% - 10px);
+                height: 650px;
+                line-height: 650px;
+                float: left
+            }
+            .Universidad{
+                background-color: #810303;
+                color:#000000;
+                float: left;
+                clear: both;
+                text-align: center;
+                margin: 5px;
+                width: 100%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <div id="header" style="margin: 0 auto;">
+                <h1 class="Título">Smart Room Project</h1>
+                <div class="Fondo">       
+                    <nav>
+                        <a href="#">Menú 1</a>
+
+                    </nav>
+                    <nav>
+                        <a href="#">Menú 2</a>
+                    </nav>
+                    <nav>
+                        <a href="#">Menú 3</a>
+                    </nav>
+                    <nav>
+                        <a href="#">Menú 4</a>
+                    </nav>
+                    <nav>
+                        <a href="#">Menú 5</a>
+                    </nav>
+                    <aside>
+                        <a href="#">Información</a>
+                    </aside>
+                </div>
+                <section class="Datoshabitación">
+                    <a href="https://maps.google.com" target="_blank">Datos de la habitación</a>
+                    <ul>
+                        <li>Superficie: 15 metros cuadrados</li>
+                        <li>Cama individual</li>
+                        <li>Lámpara de suelo</li>
+                        <li>Espejo de cuerpo entero</li>
+                        <li>Ventana frente a la cama</li>
+                        <li>Dos enchufes al lado de la ventana y cama</li>
+                    </ul>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzPQr0wLhUcERRRvVbeYsLFBRE5Ck-6-kGCuYXgEICBQ&s=10" alt="Foto de la habitación">
+                </section>
+                <section class="Datosesores"><a>Datos de los sensores</a></section>
+                <footer class="Universidad">
+                    <p>Universidad de Alcalá</p>
+                </footer>
+            </div>
+        </header>
+    </body>
+</html>

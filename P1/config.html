@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Proyecto Práctica 1</title>
+        <style type="text/css">
+            .Título{
+                background-color: #0000ff;
+                color:azure;
+                text-align: center;
+                margin: 5px;
+            }
+            .Fondo{
+                background-color: #42ff2d;
+                overflow: hidden;
+                text-align: center;
+                margin: 5px;
+            }
+            nav{
+                background-color: #04fff7;
+                text-align: center;
+                margin:20px;
+                width: 90px;
+                height: 20px;
+                float:left;
+            }
+            nav a{
+                color: #000;
+                text-decoration: none;
+            }
+            aside{
+                background-color: rgb(233, 255, 91);
+                font-weight: bold;
+                text-align: center;
+                margin:20px;
+                width: 90px;
+                height: 20px;
+                text-align: center;
+                float: left;
+            }
+            .formulario{
+                font-weight: bold;
+                background-color: #fb66ea;
+                text-align: center;
+                margin: 5px;
+                width: 390px;
+                height: 390px;
+                float: left;
+            }
+            .formulario a{
+                text-decoration: none;
+                color:aqua;
+            }
+            .formulario img {
+                max-width: 50%;
+                height: auto;
+            }
+
+            .Datosesores{
+                text-align: center;
+                color:aqua;
+                background-color: #fb66ea;
+                margin: 5px;
+                width: 390px;
+                height: 390px;
+                float: left;
+                line-height: 390px;
+            }
+            .Universidad{
+                background-color: #810303;
+                color:#000000;
+                float: left;
+                clear: both;
+                text-align: center;
+                margin: 5px;
+                width: 790px;
+            }
+            #header{
+                width: 800px;
+                margin: 0 auto;
+            }
+            #body{
+                background-color: #726767;
+            }
+            li{
+                text-align: left;
+        
+            }
+        </style>
+        <script>
+            const boton = document.getElementById("boton").addListener("click", function() {
+                console.log("Botón pulsado");
+            });
+
+        
+        </script>
+    </head>
+    <body id="body">
+        <header>
+            <div id="header" style="width: 800px;">
+                <h1 class="Título">Smart Room Project</h1>
+                <section class="formulario">
+                    <a href="https://maps.google.com" target="_blank">Datos de la habitación</a>
+                    <form>
+                        <ul>
+                            <li><label for="pais">Pais: </label>
+                            <input type="text" name="pais" list="paises"></li>
+                            <datalist id="paises">
+                                <option value="España">
+                                <option value="Francia">
+                                <option value="Italia">
+                                <option value="Alemania">
+                                <option value="Portugal">
+                            </datalist>
+                            <li><label for="ciudad">Ciudad: </label>
+                            <input type="text" name="ciudad"></li>
+                            <li><label for="coordenadas">Coordenadas GPS: </label>
+                            <input type="text" name="coordenadas"></li>
+                            <li><label for="url">URL: </label>
+                            <input type="url" name="url"></li>
+                            <li><label for="foto">Foto: </label>
+                            <input type="file" name="foto"></li>
+                            <li><label for="contraseña">Contraseña: </label>
+                            <input type="password" name="contraseña"></li>
+                        </ul>
+                        <button type="submit" id = "boton"> Enviar datos</button>
+                </section>
+                <section class="formulario">
+                    <a>Datos de los sensores</a>
+                        <ul>
+                            <li><label for="temperatura">Temperatura: </label><input type="checkbox" name="temperatura"></li>
+                            <li><label for="humedad">Humedad: </label><input type="checkbox" name="humedad"></li>
+                            <li><label for="sonido">Nivel de sonido: </label><input type="checkbox" name="sonido"></li>
+                            <li><label for="luz">Nivel de luz: </label><input type="checkbox" name="luz"></li>
+                            <li><label for="movimiento">Movimiento: </label><input type="checkbox" name="movimiento"></li>
+                        </ul>
+                    <a>Configure alertas</a>
+                        <ul>
+                            <li><label for="temp_max" >Temperatura maxima: </label><input type="number" name="temp_max" step="5" max="45" min="-20" ></li>
+                            <li><label for="temp_min" max="45" min="-20">Temperatura minima: </label><input type="number" step="5" name="temp_min" max="45" min="-20" ></li>
+                        </ul>
+                    </form>
+                </section>
+                <footer class="Universidad">
+                    <p>Universidad de Alcalá</p>
+                </footer>
+            </div>
+        </header>
+    </body>
+</html>
