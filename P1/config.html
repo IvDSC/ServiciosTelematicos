@@ -2,8 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Proyecto Práctica 1</title>
+        <title>Proyecto Práctica 1</title>>
         <style type="text/css">
+            input:hover{
+                background-color: red;
+            }
             .Título{
                 background-color: #0000ff;
                 color:azure;
@@ -15,28 +18,6 @@
                 overflow: hidden;
                 text-align: center;
                 margin: 5px;
-            }
-            nav{
-                background-color: #04fff7;
-                text-align: center;
-                margin:20px;
-                width: 90px;
-                height: 20px;
-                float:left;
-            }
-            nav a{
-                color: #000;
-                text-decoration: none;
-            }
-            aside{
-                background-color: rgb(233, 255, 91);
-                font-weight: bold;
-                text-align: center;
-                margin:20px;
-                width: 90px;
-                height: 20px;
-                text-align: center;
-                float: left;
             }
             .formulario{
                 font-weight: bold;
@@ -51,11 +32,7 @@
                 text-decoration: none;
                 color:aqua;
             }
-            .formulario img {
-                max-width: 50%;
-                height: auto;
-            }
-
+    
             .Datosesores{
                 text-align: center;
                 color:aqua;
@@ -87,13 +64,6 @@
         
             }
         </style>
-        <script>
-            const boton = document.getElementById("boton").addListener("click", function() {
-                console.log("Botón pulsado");
-            });
-
-        
-        </script>
     </head>
     <body id="body">
         <header>
@@ -123,7 +93,7 @@
                             <li><label for="contraseña">Contraseña: </label>
                             <input type="password" name="contraseña"></li>
                         </ul>
-                        <button type="submit" id = "boton"> Enviar datos</button>
+                        <button type="submit" onclick="VerificarTemperatura()">Enviar datos</button>
                 </section>
                 <section class="formulario">
                     <a>Datos de los sensores</a>
@@ -136,8 +106,8 @@
                         </ul>
                     <a>Configure alertas</a>
                         <ul>
-                            <li><label for="temp_max" >Temperatura maxima: </label><input type="number" name="temp_max" step="5" max="45" min="-20" ></li>
-                            <li><label for="temp_min" max="45" min="-20">Temperatura minima: </label><input type="number" step="5" name="temp_min" max="45" min="-20" ></li>
+                            <li><label for="temp_max">Temperatura maxima: </label><input type="number" step = "5" max = "45" min = "-20"id = "max" name="temp_max"></li>
+                            <li><label for="temp_min">Temperatura minima: </label><input type="number" step = "5" max = "45" min = "-20" id = "min" name="temp_min"></li>
                         </ul>
                     </form>
                 </section>
@@ -146,5 +116,6 @@
                 </footer>
             </div>
         </header>
+        <script src="datos.js"></script>
     </body>
 </html>
