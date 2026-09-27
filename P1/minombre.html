@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Configurar Nombre</title>
+</head>
+<body>
+    <h2>Configuración de usuario</h2>
+    <label for="inputNombre">Introduce tu nombre:</label>
+    <input type="text" id="inputNombre">
+    <button onclick="guardarNombre()">Guardar</button>
+</body>
+    <a href="index.html">Volver a la página principal</a>
+    <script>
+        function guardarNombre() {
+            // Comprobamos si el navegador soporta almacenamiento local
+            if (typeof(Storage) !== "undefined") {
+                // Capturamos el texto del input y lo guardamos en la variable local 'fname'
+                localStorage.fname = document.getElementById("inputNombre").value;
+                alert("Nombre guardado correctamente");
+            }
+        }
+    </script>
+    </body>
+</html>
