@@ -1,24 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Configurar Nombre</title>
-    <link rel="stylesheet" href="css/iroom.css">
-</head>
-<body>
-    <h2>Configuración de usuario</h2>
-    <label for="inputNombre">Introduce tu nombre:</label>
-    <input type="text" id="inputNombre">
-    <button onclick="guardarNombre()">Guardar</button>
-</body>
-    <a href="index.html">Volver a la página principal</a>
-    <script>
-        function guardarNombre() {
-            if (typeof(Storage) !== "undefined") {
-                localStorage.fname = document.getElementById("inputNombre").value;
-                alert("Nombre guardado correctamente");
-            }
-        }
-    </script>
-    </body>
-</html>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Configurar Nombre</title>
+        <link rel="stylesheet" href="css/iroom.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+    </head>
+    <body>
+        <header>  
+            <div id="header">
+                <h2 class="Título">Configuración de usuario</h2>
+                <div class="Fondo">
+                    <label for="inputNombre">Introduce tu nombre:</label>
+                    <input type="text" id="inputNombre">
+                    <button onclick="guardarNombre()">Guardar</button>
+            </div>
+            <footer class="Universidad">
+                <a href="index.html"> Universidad de Alcala</a>
+            </footer>      
+        </div>
+        </header>
+        <script src="datos.js"></script>
+    </body>                  
+    </html>
