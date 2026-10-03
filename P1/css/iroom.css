@@ -35,7 +35,7 @@
 
             .formulario > img {
                 width: 55%;
-                height: auto;
+                height: 55%;
             }
             .Universidad{
                 background-color: #810303;
@@ -134,11 +134,11 @@
                 box-shadow: 0px 0px black;
                 transform: translate(5px, 5px);
             }
-            .habitacion{
+            .habitacion1{
                 color: rgb(218, 253, 218); 
                 background-color: rgb(250, 188, 249); 
                 background-origin: border-box; 
-                height: 300px; 
+                height: 500px; 
                 border-bottom: 5px groove rgb(255, 143, 248);
                 border-top: 5px groove rgb(255, 143, 248);   
                 box-sizing: border-box;
@@ -146,19 +146,85 @@
                 width: 399px;
                 text-align: center;  
             }
-            .habitacion-derecho{
+            .habitacion-derecho1{
                 border-right: 5px groove rgb(255, 143, 248);
             }
-            .habitacion-izquierdo{
+            .habitacion-izquierdo1{
                 border-left: 5px groove rgb(255, 143, 248);
                 margin-left: 5px;
             }
             .habitacionesImg{
                 width: 55%;
-                height: auto;
-                display: inline-block;
-                margin-bottom: 30px;
+                height: 250px;
+                transition-property: width, height;
+                transition-duration: 2s;
             }
-            
-            
+            .habitacionesImg:hover{
+                width: 80%;
+                height: 400px;
+            }
+            .descripción1{
+                column-count: 1;             
+                column-gap: 10px;
+                overflow: auto;              
+                resize: both;                
+                height: 180px;               
+                padding: 5px;
+            }
+                .habitacion2{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(126, 225, 255); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(90, 159, 255);
+                border-top: 5px groove rgb(90, 159, 255);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho2{
+                border-right: 5px groove rgb(90, 159, 255);
+            }
+            .habitacion-izquierdo2{
+                border-left: 5px groove rgb(90, 159, 255);
+                margin-left: 5px;
+            }
+            .habitacion3{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(130, 255, 134); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(66, 254, 72);
+                border-top: 5px groove rgb(66, 254, 72);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho3{
+                border-right: 5px groove rgb(66, 254, 72);
+            }
+            .habitacion-izquierdo3{
+                border-left: 5px groove rgb(66, 254, 72);
+                margin-left: 5px;
+            }.habitacion4{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(255, 236, 126); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(255, 230, 90);
+                border-top: 5px groove rgb(255, 230, 90);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho4{
+                border-right: 5px groove rgb(255, 230, 90);
+            }
+            .habitacion-izquierdo4{
+                border-left: 5px groove rgb(255, 230, 90);
+                margin-left: 5px;
+            }
 
