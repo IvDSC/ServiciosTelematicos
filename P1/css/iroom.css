@@ -32,11 +32,11 @@
                 text-decoration: none;
                 color: darkgreen;
             }
+
             .formulario > img {
                 width: 55%;
-                height: auto;
+                height: 55%;
             }
-            
             .Universidad{
                 background-color: #810303;
                 border: 4px solid #000;
@@ -62,7 +62,7 @@
             }
             body{
                 background-color: lightgrey;
-                background-image: url("https://secuah.web.uah.es/2018/wp-content/uploads/2018/02/image4.png");
+                background-image: url("uah.png");
                 background-repeat: no-repeat;
                 background-size: 300px 100px;
                 background-position: right top;
@@ -134,6 +134,99 @@
                 box-shadow: 0px 0px black;
                 transform: translate(5px, 5px);
             }
-            
-            
-
+            .habitacion1{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(250, 188, 249); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(255, 143, 248);
+                border-top: 5px groove rgb(255, 143, 248);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho1{
+                border-right: 5px groove rgb(255, 143, 248);
+            }
+            .habitacion-izquierdo1{
+                border-left: 5px groove rgb(255, 143, 248);
+                margin-left: 5px;
+            }
+            .habitacionesImg{
+                width: 55%;
+                height: 250px;
+                transition-property: width, height;
+                transition-duration: 2s;
+            }
+            .habitacionesImg:hover{
+                width: 80%;
+                height: 400px;
+            }
+            .descripción1{
+                column-count: 1;             
+                column-gap: 10px;
+                overflow: auto;              
+                resize: both;                
+                height: 180px;               
+                padding: 5px;
+            }
+            .habitacion2{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(126, 225, 255); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(90, 159, 255);
+                border-top: 5px groove rgb(90, 159, 255);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho2{
+                border-right: 5px groove rgb(90, 159, 255);
+            }
+            .habitacion-izquierdo2{
+                border-left: 5px groove rgb(90, 159, 255);
+                margin-left: 5px;
+            }
+            .habitacion3{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(130, 255, 134); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(66, 254, 72);
+                border-top: 5px groove rgb(66, 254, 72);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho3{
+                border-right: 5px groove rgb(66, 254, 72);
+            }
+            .habitacion-izquierdo3{
+                border-left: 5px groove rgb(66, 254, 72);
+                margin-left: 5px;
+            }.habitacion4{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(255, 236, 126); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(255, 230, 90);
+                border-top: 5px groove rgb(255, 230, 90);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho4{
+                border-right: 5px groove rgb(255, 230, 90);
+            }
+            .habitacion-izquierdo4{
+                border-left: 5px groove rgb(255, 230, 90);
+                margin-left: 5px;
+            }
+            .letra{
+                font-family: Arial, sans-serif;    
+            }

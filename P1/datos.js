@@ -8,15 +8,21 @@ function VerificarTemperatura() {
     }
 }
 function guardarNombre() {
-            if (typeof(Storage) !== "undefined") {
-                localStorage.fname = document.getElementById("inputNombre").value;
+    let NombreEscrito = document.getElementById("inputNombre").value;
+    let reglaSoloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;   
+    if (reglaSoloLetras.test(NombreEscrito)) {     
+        if (typeof(Storage) !== "undefined") {
+                sessionStorage.fname = NombreEscrito;
                 alert("Nombre guardado correctamente");
             }
         }
+    else{
+        alert("Nombre incorrecto; debes meter un nombre (que no contenga valores numericos ni caracteres especiales)");
+    }
+}
 function cambiarNombre(){
-
-    let nombre = localStorage.getItem("fname");
+    let nombre = sessionStorage.getItem("fname");
     if (nombre) {
-    document.getElementById("informacion").innerHTML = "<span> Hola: </span> <span class='nombre'> " + localStorage.fname + " </span> <br> <span> Bienvenido a SmartRoom</span>";
+    document.getElementById("informacion").innerHTML = "<span> Hola: </span> <span class='nombre'> " + sessionStorage.fname + " </span> <br> <span> Bienvenido a SmartRoom</span>";
     }
 }
