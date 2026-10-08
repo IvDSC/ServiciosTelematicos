@@ -1,0 +1,232 @@
+            input:hover{
+                background-color: lightyellow;
+            }
+            .Título{
+                background-color: darkgreen;
+                color:azure;
+                text-align: center;
+                margin: 5px;
+                
+            }
+            .Fondo{
+                background-color: lightgreen;
+                border: 4px solid darkgreen;
+                overflow: hidden;
+                text-align: center;
+                margin: 5px;
+                height: auto;
+                display:flex;
+                align-items: center;
+            }
+            .formulario{
+                font-weight: bold;
+                background-color: lightgreen;
+                border: 4px solid darkgreen;
+                text-align: center;
+                margin: 5px;
+                width: 386px;
+                height: 386px;
+                float: left;
+            }
+            .formulario a{
+                text-decoration: none;
+                color: darkgreen;
+            }
+
+            .formulario > img {
+                width: 55%;
+                height: 55%;
+            }
+            .Universidad{
+                background-color: #810303;
+                border: 4px solid #000;
+                float: left;
+                clear: both;
+                text-align: center;
+                margin: 5px;
+                width: 790px;
+                color: orange; 
+                height: 50px;
+                
+            }
+            .Universidad a{
+                text-decoration: none;
+                color: orange;
+            }
+            .Universidad a:hover{
+                color: lightgreen;
+            }
+            #header{
+                width: 808px;
+                margin: 0 auto;
+            }
+            body{
+                background-color: lightgrey;
+                background-image: url("uah.png");
+                background-repeat: no-repeat;
+                background-size: 300px 100px;
+                background-position: right top;
+            }
+            @media(max-width: 1400px){
+                body{
+                    background-image: none;
+                }
+            }
+            li{
+                text-align: left;
+        
+            }
+            nav{
+                background-color: darkgreen;
+                border: 2px solid #000;
+                text-align: center;
+                margin:20px 10px;
+                width: 90px;
+                height: auto;
+                
+                color: lightgreen;
+            }
+            nav a{
+                text-decoration: none;
+                color: lightgreen;
+            }
+            aside{
+                background-color: darkgreen;
+                font-weight: bold;
+                margin: 20px;
+                width: 90px;
+                height: auto;
+                border: 2px solid #000;
+                text-align: center;
+                margin-left: auto;
+                margin-right: 10px;
+                
+            }
+            aside a{
+                text-decoration: none;
+                color: lightgreen;
+            }
+            button{
+                color: darkgreen;
+                font-size: 20px;
+                border: 3px solid darkgreen;
+                background-color: lightgreen;
+                width: 150px;
+                height: 50px;
+                box-shadow: 5px 5px black;
+            }
+            .nombre{
+                color: azure;
+                font-weight: bold;
+                font-size: 20px;
+            }
+            aside span{
+                color: lightgreen;
+            }
+            
+            button:hover{
+                background-color: darkgreen;
+                color: lightgreen;
+                border: 3px solid lightgreen;
+                
+            }
+            button:active{
+                box-shadow: 0px 0px black;
+                transform: translate(5px, 5px);
+            }
+            .habitacion1{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(250, 188, 249); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(255, 143, 248);
+                border-top: 5px groove rgb(255, 143, 248);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho1{
+                border-right: 5px groove rgb(255, 143, 248);
+            }
+            .habitacion-izquierdo1{
+                border-left: 5px groove rgb(255, 143, 248);
+                margin-left: 5px;
+            }
+            .habitacionesImg{
+                width: 55%;
+                height: 250px;
+                transition-property: width, height;
+                transition-duration: 2s;
+            }
+            .habitacionesImg:hover{
+                width: 80%;
+                height: 400px;
+            }
+            .descripción1{
+                column-count: 1;             
+                column-gap: 10px;
+                overflow: auto;              
+                resize: both;                
+                height: 180px;               
+                padding: 5px;
+            }
+            .habitacion2{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(126, 225, 255); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(90, 159, 255);
+                border-top: 5px groove rgb(90, 159, 255);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho2{
+                border-right: 5px groove rgb(90, 159, 255);
+            }
+            .habitacion-izquierdo2{
+                border-left: 5px groove rgb(90, 159, 255);
+                margin-left: 5px;
+            }
+            .habitacion3{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(130, 255, 134); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(66, 254, 72);
+                border-top: 5px groove rgb(66, 254, 72);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho3{
+                border-right: 5px groove rgb(66, 254, 72);
+            }
+            .habitacion-izquierdo3{
+                border-left: 5px groove rgb(66, 254, 72);
+                margin-left: 5px;
+            }.habitacion4{
+                color: rgb(218, 253, 218); 
+                background-color: rgb(255, 236, 126); 
+                background-origin: border-box; 
+                height: 500px; 
+                border-bottom: 5px groove rgb(255, 230, 90);
+                border-top: 5px groove rgb(255, 230, 90);   
+                box-sizing: border-box;
+                float: left; 
+                width: 399px;
+                text-align: center;  
+            }
+            .habitacion-derecho4{
+                border-right: 5px groove rgb(255, 230, 90);
+            }
+            .habitacion-izquierdo4{
+                border-left: 5px groove rgb(255, 230, 90);
+                margin-left: 5px;
+            }
+            .letra{
+                font-family: Arial, sans-serif;    
+            }
