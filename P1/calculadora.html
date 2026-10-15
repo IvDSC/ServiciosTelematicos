@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de temperatura</title>
+</head>
+<body>
+    <h1>Calculadora de temperatura</h1>
+    <p>Ingrese la temperatura en Celsius:</p>
+    <input type="number" id="celsius" placeholder="Grados Celsius">
+    <button onclick="convertirCelsius()">Convertir a Fahrenheit</button>
+    <button onclick="convertirFahrenheit()">Convertir a Celsius</button>
+    <button onclick="convertirKelvin()">Convertir a Kelvin</button>
+    <p id="resultado"></p>
+
+    <script>
+        function convertirCelsius() {
+            var celsius = document.getElementById("celsius").value;
+            var fahrenheit = (celsius * 9/5) + 32;
+            var kelvin = celsius + 273.15;
+            document.getElementById("resultado").innerHTML = celsius + "°C es igual a " + fahrenheit + "°F";
+        } 
+        function convertirFahrenheit() {
+            var fahrenheit = document.getElementById("fahrenheit").value;
+            var celsius = (fahrenheit - 32) * 5/9;
+            var kelvin = fahrenheit * 5/9 + 273.15;
+            document.getElementById("resultado").innerHTML = fahrenheit + "°F es igual a " + celsius + "°C";
+        }
+        function convertirKelvin() {
+            var kelvin = document.getElementById("kelvin").value;
+            var celsius = kelvin - 273;
+            var fahrenheit = kelvin * 9/5 - 459.67;
+            document.getElementById("resultado").innerHTML = kelvin + "K es igual a " + celsius + "°C";
+        }
+    </script>
+</body>
+</html>
