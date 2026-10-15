@@ -230,3 +230,32 @@
             .letra{
                 font-family: Arial, sans-serif;    
             }
+            #ventana{
+                display:none; 
+                background-color: lightblue; 
+                color:coral; 
+                text-align:center;
+                z-index:10; 
+                border: 2px solid black;    
+                position: fixed; 
+                width:50% ;
+                height:30%;
+                top:30%;
+                left:50%;
+                transform:translate(-50%,-50%);
+            }
+            #ventana span{
+                font-size:20px;
+            }
+            #ventana hr{
+                border: 2px solid black;
+            }
+            #botonventana{
+               background-color: red;
+               color: lightblue
+            }
+            #botonventana:hover{
+                background-color:darkred;
+                color:coral;
+                border: 3px solid coral;
+            }

@@ -33,13 +33,20 @@ function comprobarPaises(){
     let paises = ['españa','francia','italia','alemania','portugal'];
     pais = pais.trim().toLowerCase();
     if (paises.includes(pais)) {
-        alert("País correcto");
+        return;
     } else {
-        alert("País incorrecto");
+        document.getElementById("avisos").innerHTML += "AVISO!:Escoja un país de los de la lista <br>";
         return;
     }
 }
-
+function comprobarContrasena(){
+    let contrasena=document.getElementById("contraseña").value
+    if (contrasena.length < 10){
+        document.getElementById("avisos").innerHTML += "AVISO!:La contraseña tiene que tener más de 9 caracteres <br>";
+    }else{
+        return;
+    }
+}
 function coordsGPS(event){
     event.preventDefault();
     let coordenadas = document.getElementById("coordenadas").value;
@@ -51,19 +58,39 @@ function ComprobarCorreo(){
     //sessionStorage.fname
     let correo = document.getElementById("inputCorreo").value;
     let partes = correo.split("@");
-    
-    if (partes.length == 2 && partes[0].length > 0 && ["gmail.com", "edu.uah.es"].includes(partes[1]) && !partes[0].includes(" ")) {
-        alert("Correo correcto");
+    if(partes.length == 2 && partes[0].length > 0 && ["gmail.com", "edu.uah.es"].includes(partes[1]) && !partes[0].includes(" ")) {
+        alert("El correo es correcto");
     }else{
-        alert("Correo incorrecto");
+        alert("El correo es incorrecto");
     }
 }
 function ComprobarCorreo2(){
     let correo = document.getElementById("inputCorreo").value;
     let reglascorreo = /^[a-zA-Z0-9\.]+@(gmail\.com|edu\.uah\.es)$/;
     if (reglascorreo.test(correo)) {
-        alert("Correo correcto");
+        alert("El correo es correcto");
     }else{
-        alert("Correo incorrecto");
+        alert("El correo es incorrecto");    
     }
+}
+function mostrarVentana(event){
+    event.preventDefault();   
+    let ventana = document.getElementById("ventana");
+    let boton = document.getElementById("boton");
+    let errores = document.getElementById("avisos");
+    if (errores.innerHTML !== "") {
+        ventana.style.display = "block";
+    }else{
+        ventana.style.display = "none";
+    }
+}
+function quitarVentana(event){
+    event.preventDefault();
+    let ventana= document.getElementById("ventana");
+    let boton = document.getElementById("botonventana");
+    ventana.style.display = "none" ; 
+    document.getElementById("avisos").innerHTML = "";
+}   
+function limpiarAvisos(){
+    document.getElementById("avisos").innerHTML = "";
 }

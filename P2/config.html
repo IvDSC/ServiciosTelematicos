@@ -32,9 +32,9 @@
                                 <li><label for="foto">Foto: </label>
                                 <input id="foto" type="file" name="foto"></li>
                                 <li><label for="contraseña">Contraseña: </label>
-                                <input id="contraseña" type="password" name="contraseña"></li>
+                                <input id="contraseña" type="password" name="contraseña" placeholder="*********"></li>
                             </ul>
-                            <button type="submit" onclick="comprobarPaises(); VerificarTemperatura();">Enviar datos</button>
+                            <button id="boton" type="submit" onclick="limpiarAvisos(); comprobarPaises(); VerificarTemperatura(); comprobarContrasena(); mostrarVentana(event);">Enviar datos</button>
                     </section>
                     <section class="formulario">
                         <a>Datos de los sensores</a>
@@ -52,6 +52,16 @@
                             </ul>
                     </section>
                 </form>
+                <div id="ventana">
+                    <div id="ventana-cabecera">
+                        <h1>Aviso!</h1>
+                        <hr>
+                    </div>
+                    <div id="ventana-contenido">
+                        <span id="avisos"></span>
+                        <button id="botonventana" onclick="quitarVentana(event);"> X </button>
+                    </div>
+                </div>
                 <footer class="Universidad" id="footer">
                     
                     <a href="index.html"> Universidad de Alcala</a>
