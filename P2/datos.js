@@ -2,11 +2,13 @@ function VerificarTemperatura() {
     const max=document.getElementById("temp_max")
     const min=document.getElementById("temp_min")
     if (parseInt(max.value) <= parseInt(min.value)) {
-        alert("La temperatura máxima no puede ser menor o igual a la temperatura mínima.");
-    }else if(parseInt(max.value) >= 26 && parseInt(min.value) <= 22){
-        alert("La temperatura tiene que estar entre 26 y 22 grados");
+        document.getElementById("avisos").innerHTML += "AVISO!:La temperatura máxima no puede ser menor o igual a la tempexº    ratura mínima.<br>";
+    }else if(parseInt(max.value) > 26 && parseInt(min.value) < 22){
+        document.getElementById("avisos").innerHTML += "AVISO!:La temperatura tiene que estar entre 26 y 22 grados.<br>";
+    }else if(max.value == "" || min.value == ""){
+        document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir las temperaturas máxima y mínima.<br>";
     }else{
-        alert("Datos enviados");
+        return; 
     }
 }
 function guardarNombre() {
@@ -36,24 +38,42 @@ function comprobarPaises(){
         return;
     } else {
         document.getElementById("avisos").innerHTML += "AVISO!:Escoja un país de los de la lista <br>";
-        return;
     }
 }
 function comprobarContrasena(){
     let contrasena=document.getElementById("contraseña").value
-    if (contrasena.length < 10){
+    if (contrasena.length < 9){
         document.getElementById("avisos").innerHTML += "AVISO!:La contraseña tiene que tener más de 9 caracteres <br>";
     }else{
         return;
     }
 }
 function coordsGPS(event){
-    event.preventDefault();
     let coordenadas = document.getElementById("coordenadas").value;
-    let suma;
-        suma = "https://www.google.com/maps/place/" + coordenadas;
-        document.getElementById("url").value= suma;
+    if(coordenadas == ""){
+        event.preventDefault();
+        document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir coordenadas GPS <br>"; 
+        sessionStorage.boton = "none";
+    }else{
+        sessionStorage.boton = "inline-block";
+        sessionStorage.coordenadasEnviadas = coordenadas;
     }
+}
+function botonMaps(){
+    let boton = document.getElementById("botoncoords");
+    if (sessionStorage.boton == "inline-block") {
+        boton.style.display = "inline-block";
+    } else {
+        boton.style.display = "none";
+    }
+    sessionStorage.removeItem("boton");
+}
+function abrirMaps(){
+    let coordenadas = sessionStorage.coordenadasEnviadas;
+    let suma;
+    suma = "https://www.google.com/maps/place/" + coordenadas;
+    window.open(suma, "_blank");
+}
 function ComprobarCorreo(){
     //sessionStorage.fname
     let correo = document.getElementById("inputCorreo").value;
@@ -74,12 +94,16 @@ function ComprobarCorreo2(){
     }
 }
 function mostrarVentana(event){
-    event.preventDefault();   
     let ventana = document.getElementById("ventana");
     let boton = document.getElementById("boton");
     let errores = document.getElementById("avisos");
+    let botoncoords = document.getElementById("botoncoords");
     if (errores.innerHTML !== "") {
+        event.preventDefault();
         ventana.style.display = "block";
+        sessionStorage.boton = "none";
+        sessionStorage.removeItem("coordenadasEnviadas");
+        botoncoords.style.display = "none";
     }else{
         ventana.style.display = "none";
     }

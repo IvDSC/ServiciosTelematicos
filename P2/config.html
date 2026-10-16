@@ -7,7 +7,7 @@
         <link rel="icon" href="favicon.ico" type="image/x-icon">
     </head>
     
-    <body id="body">
+    <body id="body" onload="botonMaps()">
             <div id="header">
                 <h1 class="Título">Smart Room Project</h1>
                 <datalist id="paises">
@@ -26,7 +26,8 @@
                                 <li><label for="ciudad">Ciudad: </label>
                                 <input id="ciudad" type="text" name="ciudad"></li>
                                 <li><label for="coordenadas">Coordenadas GPS: </label>
-                                <input id="coordenadas" type="text" name="coordenadas"></li>
+                                <input id="coordenadas" type="text" name="coordenadas"> <button id="botoncoords" type="button" onclick="abrirMaps();"> => </button></li>
+                                
                                 <li><label for="url">URL: </label>
                                 <input id="url" type="url" name="url"></li>
                                 <li><label for="foto">Foto: </label>
@@ -34,7 +35,7 @@
                                 <li><label for="contraseña">Contraseña: </label>
                                 <input id="contraseña" type="password" name="contraseña" placeholder="*********"></li>
                             </ul>
-                            <button id="boton" type="submit" onclick="limpiarAvisos(); comprobarPaises(); VerificarTemperatura(); comprobarContrasena(); mostrarVentana(event);">Enviar datos</button>
+                            <button id="boton" type="submit" onclick="limpiarAvisos(); comprobarPaises(); VerificarTemperatura(); comprobarContrasena(); mostrarVentana(event); coordsGPS(event);">Enviar datos</button>
                     </section>
                     <section class="formulario">
                         <a>Datos de los sensores</a>
@@ -47,8 +48,8 @@
                             </ul>
                         <a>Configure alertas</a>
                             <ul>
-                                <li><label for="temp_max">Temperatura maxima: </label><input id="temp_max" type="number" step = "5" max = "45" min = "-20"  name="temp_max"></li>
-                                <li><label for="temp_min">Temperatura minima: </label><input id="temp_min" type="number" step = "5" max = "45" min = "-20"  name="temp_min"></li>
+                                <li><label for="temp_max">Temperatura maxima: </label><input id="temp_max" type="number" step = "5" max = "45" min = "-20"  name="temp_max" placeholder="max 45"></li>
+                                <li><label for="temp_min">Temperatura minima: </label><input id="temp_min" type="number" step = "5" max = "45" min = "-20"  name="temp_min" placeholder="min -20"></li>
                             </ul>
                     </section>
                 </form>
