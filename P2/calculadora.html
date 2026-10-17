@@ -13,10 +13,15 @@
 
         // 2. FUNCIÓN PARA AÑADIR NÚMEROS A LA PANTALLA
         function Numerointroducido(numero) {
-            // Concatenamos el número como texto (ej: "4" + "5" = "45")
-            operandoActual = operandoActual + numero;
+    // Comprobamos si lo que hay en memoria es un número matemático (un resultado final)
+            if (typeof operandoActual === "number") {
+                operandoActual = numero; 
+            } else {
+                operandoActual = operandoActual + numero;
+            }
             MostrarporPantalla();
         }
+
 
         // 3. FUNCIÓN PARA SELECCIONAR LA OPERACIÓN (+, -, *, /)
         function Operacion(operador) {
