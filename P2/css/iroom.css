@@ -292,12 +292,15 @@
                 overflow: hidden;
                 text-align: center;
                 margin: 5px;
-                display:flex;
-                align-items: center;  
                 color: black; 
                 font-size: 13px;  
-                
             }
+            .panel-lateral{
+                break-inside: avoid;   /* PROHÍBE que el elemento se parta entre dos columnas */
+                display: inline-block; /* Ayuda a estabilizar el bloque dentro de la columna */
+                width: 100%;           /* Obliga al bloque a usar toda la anchura de su columna */
+                box-sizing: border-box; 
+}
             .calculadora {
                 width: 250px;
                 border: 2px solid #333;
@@ -306,6 +309,9 @@
                 background-color: #f1f1f1;
                 font-family: Arial, sans-serif;
                 margin: 20px auto;
+                break-inside: avoid;   
+                display: inline-block;           
+                box-sizing: border-box;
             }
             #pantalla {
                 width: 100%;

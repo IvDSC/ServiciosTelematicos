@@ -11,9 +11,7 @@
         let operandoAnterior = "";
         let operacionPendiente = undefined;
 
-        // 2. FUNCIÓN PARA AÑADIR NÚMEROS A LA PANTALLA
         function Numerointroducido(numero) {
-    // Comprobamos si lo que hay en memoria es un número matemático (un resultado final)
             if (typeof operandoActual === "number") {
                 operandoActual = numero; 
             } else {
@@ -21,31 +19,30 @@
             }
             MostrarporPantalla();
         }
-
-
-        // 3. FUNCIÓN PARA SELECCIONAR LA OPERACIÓN (+, -, *, /)
         function Operacion(operador) {
             if (operandoActual === ""){
                 alert("Introduce un valor antes de seleccionar una operación."); 
-                return; // Si está vacío, no hacemos nada
+                return; 
+            }
+            if (operador === "^") {
+                operacionPendiente = "^";
+                operandoAnterior = operandoActual;
+                Calcular();
+                return; 
             }
             if (operandoAnterior !== "") {
-                Calcular(); // Si ya había una operación en curso, la resolvemos primero
+                Calcular(); 
             }
-            
             operacionPendiente = operador;
             operandoAnterior = operandoActual;
-            operandoActual = ""; // Vaciamos para escribir el segundo número
+            operandoActual = ""; 
         }
-
         // 4. ESTRUCTURA DE CONTROL PARA EL CÁLCULO (Uso de 'switch')
         function Calcular() {
             let resultado;
             // Convertimos los textos de las variables a números reales para calcular
             let anterior = Number(operandoAnterior);
             let actual = Number(operandoActual);
-
-            // Usamos la estructura 'switch' vista en tus diapositivas
             switch (operacionPendiente) {
                 case "+":
                     resultado = anterior + actual;
@@ -57,17 +54,30 @@
                     resultado = anterior * actual;
                     break;
                 case "/":
-                    // Recordando tu diapositiva: N / 0 da Infinity en JS
                     resultado = anterior / actual;
+                    break;
+                case "^":
+                    resultado = actual * actual;
+                    break;
+                case "K":
+                    CambioaKelvin();
+                    break;
+                case "F":
+                    CambioaFahrenheit();
+                    break;
+                case "C":
+                    CambioaCelsius();
                     break;
                 default:
                     alert("Faltan números para realizar la operación seleccionada");
-                    return; // Si no hay operación, salimos
-            }            // Actualizamos las variables con el resultado
+                    return; 
+            }
+            for(i=0; i<=10; i++){            
             operandoActual = resultado;
             operacionPendiente = undefined;
             operandoAnterior = "";
             MostrarporPantalla();
+            }
         }
 
         // 5. FUNCIÓN PARA LIMPIAR TODO (Botón C)
@@ -87,8 +97,11 @@
 <body>
     <div id="header">
         <h1 class="Título">Calculadora de Temperatura</h1>
-        <div class="Fondo">
-            <div class="calculadora">
+        <div class="texto-columnas">
+            <div class="">
+                <h2>Cambio de Unidades</h2>
+            </div>
+                <div class="calculadora">
                 <input type="text" id="pantalla" readonly>
                 <div class="fila">
                     <button class="button-numero" onclick="Numerointroducido('7')">7</button>
@@ -109,15 +122,22 @@
                     <button class="btn-operacion" onclick="Operacion('*')">*</button>
                 </div>
                 <div class="fila">
-                    <button class="button-numero" onclick="Numerointroducido('0')">0</button>
                     <button class="button-numero" onclick="Numerointroducido('.')">.</button>
+                    <button class="button-numero" onclick="Numerointroducido('0')">0</button>
                     <button class="btn-operacion" onclick="Calcular()">=</button>
                     <button class="btn-operacion" onclick="Operacion('/')">/</button>
+                </div>
+                <div class="fila">
+                    <button class="btn-operacion" onclick="Operacion('^')">x²</button>
+                    <button class="btn-operacion" onclick="CambioaKelvin('K')">K</button>
+                    <button class="btn-operacion" onclick="CambioaFahrenheit('F')">F</button>
+                    <button class="btn-operacion" onclick="CambioaCelsius('C')">C</button>
                 </div>
                 <div class="fila">
                     <button class="btn-limpiar" onclick="Borrar()">Borrar</button>
                 </div> 
             </div>
+            <h2>Historial de Temperaturas Calculadas</h2>
         </div>
         <footer class="Universidad" id="footer">
             <a href="index.html"> Universidad de Alcala</a>            
