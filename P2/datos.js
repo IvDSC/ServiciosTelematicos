@@ -118,3 +118,165 @@ function quitarVentana(event){
 function limpiarAvisos(){
     document.getElementById("avisos").innerHTML = "";
 }
+// Funciones para la calculadora
+let operandoActual = "";
+let operandoAnterior = "";
+let operacionPendiente = undefined;
+let unidadActual = "C"
+var indice = 0;
+function Numerointroducido(numero) {
+    if (typeof operandoActual === "number") {
+        operandoActual = numero; 
+            } 
+    else {
+         operandoActual = operandoActual + numero;
+            }
+    MostrarporPantalla();
+        }
+function Operacion(operador) {
+    switch (operador) {  
+        case "-":
+            if (operandoActual === ""){
+                    operandoActual = "-";
+                    MostrarporPantalla();
+                    return;
+                    }
+            break; 
+
+        case "^":
+            if (operandoActual === "" || operandoActual === "-") {
+                alert("Introduce un valor antes de elevar al cuadrado.");
+                return;
+            }
+            let actual = Number(operandoActual);
+            operandoActual = Number((actual * actual).toFixed(2));
+            Historial(actual + "² = " + operandoActual + " º" + unidadActual);
+            MostrarporPantalla();
+            return;
+        }
+    if (operandoActual === "" || operandoActual === "-") {
+        alert("Introduce un valor antes de seleccionar una operación.");
+        return;
+    }
+    if (operandoAnterior !== "") {
+        Calcular();
+    }
+    operacionPendiente = operador;
+    operandoAnterior = operandoActual;
+    operandoActual = "";
+}
+function Calcular() {
+    let resultado;
+    let anterior = Number(operandoAnterior);
+    let actual = Number(operandoActual);
+    switch (operacionPendiente) {
+        case "+":
+            resultado = anterior + actual;
+            break;
+        case "-":
+            resultado = anterior - actual;
+            break;
+        case "*":
+            resultado = anterior * actual;
+            break;
+        case "/":
+            resultado = anterior / actual;
+            break;
+        case "^":
+            resultado = actual * actual;
+            break;
+        default:
+            alert("Faltan números para realizar la operación seleccionada");
+            return; 
+    }
+    operandoActual = Number(resultado.toFixed(2));
+    Historial(anterior + " " + operacionPendiente + " " + actual + " = " + operandoActual + " º" + unidadActual);
+    operacionPendiente = undefined;
+    operandoAnterior = "";
+    MostrarporPantalla();
+}
+function Borrar() {
+    operandoActual = "";
+    operandoAnterior = "";
+    operacionPendiente = undefined;
+    MostrarporPantalla();
+}
+function CambioaCelsius() {
+    if (operandoActual === "" || operandoActual === "-"){ 
+        return;
+    }
+    let valor = Number(operandoActual);
+    let resultadoC;
+    if (unidadActual === "F") {
+        resultadoC = (valor - 32) * 5/9;
+    } 
+    else if (unidadActual === "K") {
+        resultadoC = valor - 273.15;
+    } 
+    else {
+        return;
+    } 
+    operandoActual = Number(resultadoC.toFixed(2));
+    unidadActual = "C";
+    Historial("Conversión: " + valor + " º" + unidadActual + " -> " + operandoActual + " ºC");
+    MostrarporPantalla();
+} 
+function CambioaFahrenheit() {
+    if (operandoActual === "" || operandoActual === "-"){ 
+        return;
+    }
+    let valor = Number(operandoActual);
+    let resultadoF;
+    if (unidadActual === "C") {
+        resultadoF = (valor * 9/5) + 32;
+    }
+    else if (unidadActual === "K") {
+    resultadoF = (valor - 273.15) * 9/5 + 32;
+    } 
+    else {
+        return;
+    }
+    operandoActual = Number(resultadoF.toFixed(2));
+    unidadActual = "F";
+    Historial("Conversión: " + valor + " º" + unidadActual + " -> " + operandoActual + " ºF");
+    MostrarporPantalla();
+}
+function CambioaKelvin() {
+    if (operandoActual === "" || operandoActual === "-"){ 
+        return;
+    }
+    let valor = Number(operandoActual);
+    let resultadoK;
+    if (unidadActual === "C") {
+        resultadoK = valor + 273.15;
+    } 
+    else if (unidadActual === "F") {
+        resultadoK = (valor - 32) * 5/9 + 273.15;
+    } 
+    else {
+        return; 
+    }
+    operandoActual = Number(resultadoK.toFixed(2));
+    unidadActual = "K";
+    Historial("Conversión: " + valor + " º" + unidadActual + " -> " + operandoActual + " ºK");
+    MostrarporPantalla();
+}
+function MostrarporPantalla() {
+    if (operandoActual !== "") {
+        document.getElementById("pantalla").value = operandoActual + " º" + unidadActual;
+    } 
+    else {
+    document.getElementById("pantalla").value = "";
+    }
+}
+function Historial(texto) {
+    indice++;
+    var nuevoElemento = document.createElement("li");
+    var nodoTexto = document.createTextNode("Operación " + indice + ": " + texto);
+    nuevoElemento.appendChild(nodoTexto);
+    var lista = document.getElementById("miLista");
+    lista.appendChild(nuevoElemento);
+    if (lista.children.length > 10) {
+        lista.removeChild(lista.children[0]);
+    }
+}
