@@ -271,8 +271,24 @@
                 z-index:5;
                 box-shadow: 2px 2px black;
                 display: none;
+            } 
+            #botonciudad{
+                background-color: lightgreen;
+                color: darkgreen;
+                font-size: 10px;
+                border: 2px solid darkgreen;
+                width: 30px;
+                height: 20px;
+                z-index:5;
+                box-shadow: 2px 2px black;
+                display: none;
             }
             #botoncoords:hover{
+                background-color: darkgreen;
+                color: lightgreen;
+                border: 2px solid lightgreen;
+            }
+            #botonciudad:hover{
                 background-color: darkgreen;
                 color: lightgreen;
                 border: 2px solid lightgreen;
@@ -281,7 +297,10 @@
                 box-shadow: 0px 0px black;
                 transform: translate(2px, 2px);
             }
-            /* Innovación de la calculadora*/
+            #botonciudad:active{
+                box-shadow: 0px 0px black;
+                transform: translate(2px, 2px);
+            }
             .texto-columnas { 
                 column-count: 3;              
                 column-gap: 10px;                                 
@@ -338,4 +357,4 @@
                 background-color: #f44336;
                 color: white;
                 width: 100%;
-            }   
+            }

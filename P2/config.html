@@ -7,7 +7,7 @@
         <link rel="icon" href="favicon.ico" type="image/x-icon">
     </head>
     
-    <body id="body" onload="botonMaps()">
+    <body id="body" onload="botonMaps();botonCiudadMaps(); enviarTemperatura();">
             <div id="header">
                 <h1 class="Título">Smart Room Project</h1>
                 <datalist id="paises">
@@ -24,10 +24,9 @@
                             <li><label for="pais">Pais: </label>
                             <input id="pais" type="text" name="pais" list="paises"></li>
                                 <li><label for="ciudad">Ciudad: </label>
-                                <input id="ciudad" type="text" name="ciudad"></li>
-                                <li><label for="coordenadas">Coordenadas GPS: </label>
+                                <input id="ciudad" type="text" name="ciudad"><button id="botonciudad" type="button" onclick="abrirMapsCiudad();"> => </button></li>
+                                <li><label for="coordenadas">Coordenadas GPS:</label>
                                 <input id="coordenadas" type="text" name="coordenadas"> <button id="botoncoords" type="button" onclick="abrirMaps();"> => </button></li>
-                                
                                 <li><label for="url">URL: </label>
                                 <input id="url" type="url" name="url"></li>
                                 <li><label for="foto">Foto: </label>
@@ -35,7 +34,7 @@
                                 <li><label for="contraseña">Contraseña: </label>
                                 <input id="contraseña" type="password" name="contraseña" placeholder="*********"></li>
                             </ul>
-                            <button id="boton" type="submit" onclick="limpiarAvisos(); comprobarPaises(); VerificarTemperatura(); comprobarContrasena(); mostrarVentana(event); coordsGPS(event);">Enviar datos</button>
+                            <button id="boton" type="submit" onclick="limpiarAvisos(); comprobarPaises(); VerificarTemperatura(); comprobarContrasena(); coordsGPS(event); coordsCiudad(event); mostrarVentana(event);">Enviar datos</button>
                     </section>
                     <section class="formulario">
                         <a>Datos de los sensores</a>

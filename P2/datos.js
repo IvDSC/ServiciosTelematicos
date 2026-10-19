@@ -1,13 +1,18 @@
+let temperatura;
 function VerificarTemperatura() {
     const max=document.getElementById("temp_max")
     const min=document.getElementById("temp_min")
-    if (parseInt(max.value) <= parseInt(min.value)) {
-        document.getElementById("avisos").innerHTML += "AVISO!:La temperatura máxima no puede ser menor o igual a la tempexº    ratura mínima.<br>";
-    }else if(parseInt(max.value) > 26 && parseInt(min.value) < 22){
-        document.getElementById("avisos").innerHTML += "AVISO!:La temperatura tiene que estar entre 26 y 22 grados.<br>";
-    }else if(max.value == "" || min.value == ""){
-        document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir las temperaturas máxima y mínima.<br>";
+    if(max.value=="" || min.value==""){
+        document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir las temperaturas maxima y minima.<br>";
+        temperatura = 1;
+    }else if(parseInt(max.value) <= parseInt(min.value)){
+        document.getElementById("avisos").innerHTML += "AVISO!:La temperatura máxima no puede ser menor o igual a la temperatura mínima.<br>";
+        temperatura = 1;
+    }else if(parseInt(max.value) > 26 || parseInt(min.value) < 22){
+        sessionStorage.avisotemp = "AVISO!:La temperatura tiene que estar entre 26 y 22 grados.<br>";
+        temperatura = 0;
     }else{
+        temperatura = 0;
         return; 
     }
 }
@@ -59,6 +64,26 @@ function coordsGPS(event){
         sessionStorage.coordenadasEnviadas = coordenadas;
     }
 }
+function coordsCiudad(event){
+    let ciudad = document.getElementById("ciudad").value;
+    if(ciudad == ""){
+        event.preventDefault();
+        document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir una ciudad <br>"; 
+        sessionStorage.botonCiudad = "none";
+    }else{
+        sessionStorage.botonCiudad = "inline-block";
+        sessionStorage.ciudadEnviada = ciudad;
+    }
+}
+function botonCiudadMaps(){
+    let botonCiudad = document.getElementById("botonciudad");
+    if (sessionStorage.botonCiudad == "inline-block") {
+        botonCiudad.style.display = "inline-block";
+    } else {
+        botonCiudad.style.display = "none";
+    }
+    sessionStorage.removeItem("botonCiudad");
+}
 function botonMaps(){
     let boton = document.getElementById("botoncoords");
     if (sessionStorage.boton == "inline-block") {
@@ -68,10 +93,16 @@ function botonMaps(){
     }
     sessionStorage.removeItem("boton");
 }
+function abrirMapsCiudad(){
+    let ciudad = sessionStorage.ciudadEnviada;
+    let suma;
+    suma = "https://www.google.com/maps?q=" + ciudad;
+    window.open(suma,"_blank");
+}
 function abrirMaps(){
     let coordenadas = sessionStorage.coordenadasEnviadas;
     let suma;
-    suma = "https://www.google.com/maps/place/" + coordenadas;
+    suma = "https://www.google.com/maps?q=" + coordenadas;
     window.open(suma, "_blank");
 }
 function ComprobarCorreo(){
@@ -98,14 +129,28 @@ function mostrarVentana(event){
     let boton = document.getElementById("boton");
     let errores = document.getElementById("avisos");
     let botoncoords = document.getElementById("botoncoords");
+    let botonciudad = document.getElementById("botonciudad");
     if (errores.innerHTML !== "") {
         event.preventDefault();
         ventana.style.display = "block";
         sessionStorage.boton = "none";
-        sessionStorage.removeItem("coordenadasEnviadas");
+        sessionStorage.removeItem("coordenadasEnviada");
+        sessionStorage.removeItem("ciudadEnviadas");
+        sessionStorage.botonCiudad = "none";
         botoncoords.style.display = "none";
+        botonciudad.style.display = "none";
     }else{
         ventana.style.display = "none";
+    }
+}
+function enviarTemperatura(){
+    let mensaje= sessionStorage.avisotemp;
+    let ventana = document.getElementById("ventana");
+    let avisos = document.getElementById("avisos");
+    if (mensaje){
+        avisos.innerHTML = mensaje;
+        ventana.style.display = "block";
+        sessionStorage.removeItem("avisotemp");
     }
 }
 function quitarVentana(event){
@@ -118,7 +163,6 @@ function quitarVentana(event){
 function limpiarAvisos(){
     document.getElementById("avisos").innerHTML = "";
 }
-// Funciones para la calculadora
 let operandoActual = "";
 let operandoAnterior = "";
 let operacionPendiente = undefined;
