@@ -56,6 +56,7 @@ function comprobarContrasena(){
 function coordsGPS(event){
     let coordenadas = document.getElementById("coordenadas").value;
     let partes = coordenadas.split(",");
+
     if (coordenadas.includes(",") && partes.length == 2) {
         if (partes[0].trim() === "" || partes[1].trim() === "") {
             event.preventDefault();
@@ -71,7 +72,29 @@ function coordsGPS(event){
                 sessionStorage.boton = "none";
                 return;
             }else{
-                coordenadas = nortesur[0].trim() + "º" + nortesur[1].trim() + "," + esteoeste[0].trim() + "º" + esteoeste[1].trim();
+                let cambioS = nortesur[0].trim().toUpperCase().replace("S","-").replace("N","").replace(" ","");
+                let cambioO = esteoeste[0].trim().toUpperCase().replace("O","-").replace("E","").replace(" ","");
+                let latMinSeg = nortesur[1].split("'");
+                let lonMinSeg =  esteoeste[1].split("'");
+                let latgrad = parseFloat(cambioS);
+                let latmin = parseFloat(latMinSeg[0]);
+                let latseg = parseFloat(latMinSeg[1].replace('"','').replace("''",""));
+                let longrad = parseFloat(cambioO);
+                let lonmin = parseFloat(lonMinSeg[0]);
+                let lonseg = parseFloat(lonMinSeg[1].replace('"','').replace("''",""));
+                let latDec = latgrad + (latmin/60) + (latseg/3600);
+                let lonDec = longrad + (lonmin/60) + (lonseg/3600);
+                if (latgrad < 0 || cambioS.includes("-")) {
+                    latDec = latgrad - (latmin/60) - (latseg/3600);
+                } else {
+                    latDec = latgrad + (latmin/60) + (latseg/3600);
+                }    
+                if (longrad < 0 || cambioO.includes("-")) {
+                     lonDec = longrad - (lonmin/60) - (lonseg/3600);
+                } else {
+                    lonDec = longrad + (lonmin/60) + (lonseg/3600);
+                }
+                coordenadas = latDec + "," + lonDec;
                 sessionStorage.boton = "inline-block";
                 sessionStorage.coordenadasEnviadas = coordenadas; 
             }
@@ -134,7 +157,7 @@ function ComprobarCorreo(){
     //sessionStorage.fname
     let correo = document.getElementById("inputCorreo").value;
     let partes = correo.split("@");
-    if(partes.length == 2 && partes[0].length > 0 && ["gmail.com", "edu.uah.es"].includes(partes[1]) && !partes[0].includes(" ")) {
+    if(partes.length == 2 && ["gmail.com", "edu.uah.es"].includes(partes[1]) && !partes[0].includes(" ")) {
         alert("El correo es correcto");
     }else{
         alert("El correo es incorrecto");
@@ -347,5 +370,18 @@ function Historial(texto) {
     lista.appendChild(nuevoElemento);
     if (lista.children.length > 10) {
         lista.removeChild(lista.children[0]);
+    }
+}
+function indicadorLong(){
+    let contra = document.getElementById("contraseña");
+    let longCon = contra.value.length;
+    if(longCon == 0){
+        contra.style.color = "";
+    }else if(longCon < 5){
+        contra.style.color = "red";
+    }else if(longCon < 9){
+        contra.style.color = "orange";
+    }else{
+        contra.style.color = "lightgreen"
     }
 }

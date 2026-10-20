@@ -32,7 +32,7 @@
                                 <li><label for="foto">Foto: </label>
                                 <input id="foto" type="file" name="foto"></li>
                                 <li><label for="contraseña">Contraseña: </label>
-                                <input id="contraseña" type="password" name="contraseña" placeholder="*********"></li>
+                                <input id="contraseña" type="password" name="contraseña" placeholder="*********" oninput="indicadorLong();"></li>
                             </ul>
                             <button id="boton" type="submit" onclick="limpiarAvisos(); comprobarPaises(); VerificarTemperatura(); comprobarContrasena(); coordsGPS(event); coordsCiudad(event); mostrarVentana(event);">Enviar datos</button>
                     </section>
