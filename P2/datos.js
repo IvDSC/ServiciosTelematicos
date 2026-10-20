@@ -55,13 +55,38 @@ function comprobarContrasena(){
 }
 function coordsGPS(event){
     let coordenadas = document.getElementById("coordenadas").value;
-    if(coordenadas == ""){
-        event.preventDefault();
-        document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir coordenadas GPS <br>"; 
-        sessionStorage.boton = "none";
-    }else{
+    let partes = coordenadas.split(",");
+    if (coordenadas.includes(",") && partes.length == 2) {
+        if (partes[0].trim() === "" || partes[1].trim() === "") {
+            event.preventDefault();
+            document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir coordenadas GPS completas! <br>";
+            sessionStorage.boton = "none";
+            return;
+        }else if (coordenadas.includes("º")){
+            let nortesur = partes[0].split("º");
+            let esteoeste = partes[1].split("º");
+            if(nortesur.length != 2 || esteoeste.length != 2 || nortesur[0].trim() === "" || nortesur[1].trim() === "" || esteoeste[0].trim() === "" || esteoeste[1].trim() === "" || partes[0].split("'").length == 3 || partes[1].split("'").length == 3 || (partes[0].includes('"') && !partes[0].includes("'") || partes[1].includes('"') && !partes[1].includes("'"))) {
+                event.preventDefault();
+                document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir coordenadas GPS en el formato correcto(E,N) o (º ' '',º ' '') <br>";
+                sessionStorage.boton = "none";
+                return;
+            }else{
+                coordenadas = nortesur[0].trim() + "º" + nortesur[1].trim() + "," + esteoeste[0].trim() + "º" + esteoeste[1].trim();
+                sessionStorage.boton = "inline-block";
+                sessionStorage.coordenadasEnviadas = coordenadas; 
+            }
+        }else{
         sessionStorage.boton = "inline-block";
         sessionStorage.coordenadasEnviadas = coordenadas;
+        }
+    }else if (coordenadas.trim() == ""){
+        event.preventDefault();
+        document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir coordenadas GPS! <br>";
+        sessionStorage.boton = "none";
+    }else{
+        event.preventDefault();
+        document.getElementById("avisos").innerHTML += "AVISO!:Debes introducir coordenadas GPS en el formato correcto(E,N) o (º ' '',º ' '') <br>";
+        sessionStorage.boton = "none";
     }
 }
 function coordsCiudad(event){
