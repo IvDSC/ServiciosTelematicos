@@ -78,10 +78,10 @@ function coordsGPS(event){
                 let lonMinSeg =  esteoeste[1].split("'");
                 let latgrad = parseFloat(cambioS);
                 let latmin = parseFloat(latMinSeg[0]);
-                let latseg = parseFloat(latMinSeg[1].replace('"','').replace("''",""));
+                let latseg = parseFloat((latMinSeg[1] || "").replace('"','').replace("''","")) || 0;
                 let longrad = parseFloat(cambioO);
                 let lonmin = parseFloat(lonMinSeg[0]);
-                let lonseg = parseFloat(lonMinSeg[1].replace('"','').replace("''",""));
+                let lonseg = parseFloat((lonMinSeg[1] || "").replace('"','').replace("''","")) || 0; 
                 let latDec = latgrad + (latmin/60) + (latseg/3600);
                 let lonDec = longrad + (lonmin/60) + (lonseg/3600);
                 if (latgrad < 0 || cambioS.includes("-")) {
@@ -157,7 +157,9 @@ function ComprobarCorreo(){
     //sessionStorage.fname
     let correo = document.getElementById("inputCorreo").value;
     let partes = correo.split("@");
-    if(partes.length == 2 && ["gmail.com", "edu.uah.es"].includes(partes[1]) && !partes[0].includes(" ")) {
+    let etiquetas = (partes[1] || "").split(".");
+    let tlds = ["com", "es", "org", "net", "edu"];
+    if(partes[0].length > 0 && etiquetas.length >= 2 && partes.length == 2 && tlds.includes(etiquetas[etiquetas.length - 1]) && !partes[0].includes(" ")) {
         alert("El correo es correcto");
     }else{
         alert("El correo es incorrecto");
@@ -165,7 +167,7 @@ function ComprobarCorreo(){
 }
 function ComprobarCorreo2(){
     let correo = document.getElementById("inputCorreo").value;
-    let reglascorreo = /^[a-zA-Z0-9\.]+@(gmail\.com|edu\.uah\.es)$/;
+    let reglascorreo = /^[a-zA-Z0-9._-]+@([a-zA-Z0-9-]+\.)+(com|es|org|net|edu)$/;
     if (reglascorreo.test(correo)) {
         alert("El correo es correcto");
     }else{
@@ -374,14 +376,19 @@ function Historial(texto) {
 }
 function indicadorLong(){
     let contra = document.getElementById("contraseña");
+    let indicador = document.getElementById("indicador");
     let longCon = contra.value.length;
     if(longCon == 0){
         contra.style.color = "";
     }else if(longCon < 5){
         contra.style.color = "red";
+        indicador.style.color = "red";
     }else if(longCon < 9){
         contra.style.color = "orange";
+        indicador.style.color = "red";
     }else{
         contra.style.color = "lightgreen"
+        indicador.style.color = "green";
     }
+    indicador.textContent = "Evaluación de longitud: (" + longCon + " caracteres de 9 necesarios)";
 }
