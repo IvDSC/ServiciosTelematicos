@@ -392,3 +392,24 @@ function indicadorLong(){
     }
     indicador.textContent = "Evaluación de longitud: (" + longCon + " caracteres de 9 necesarios)";
 }
+let contador = 1;
+function botonderecho(){
+    if (contador<2){
+        let imagenes = [$("#img-invierno"), $("#img-primavera"), $("#img-verano"), $("#img-otoño"), $("#img-lluvia")]; //0,1,2,3,4
+        imagenes[contador].hide();
+        contador++;
+        imagenes[contador + 2].show();
+    }
+}
+function botonizquierdo(){
+    if (contador>0){
+        let imagenes = [$("#img-invierno"), $("#img-primavera"), $("#img-verano"), $("#img-otoño"), $("#img-lluvia")];
+        imagenes[contador + 2].hide();
+        contador--;
+        imagenes[contador].show();
+    }
+}
+function mostrarinformacionimagen(){
+    let imagenes = [$("#img-invierno"), $("#img-primavera"), $("#img-verano"), $("#img-otoño"), $("#img-lluvia")];
+
+}
