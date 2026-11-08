@@ -1,14 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Calculadora de Temperaturas</title>
+    <meta charset="UTF-8">
+    <title>Tablas</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/iroom.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
 </head>
 <body>
-    <table>
-        
+    <div id="header">
+        <h1 class="Título">Tablas de Ciudades Españolas</h1>
+        <div class="Fondo">
+            <table id="tabla-primavera" class="mi-tabla">
+                <thead>
+                    <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td style="text-align: left;">Alcalá de H.</td><td>25</td><td>48</td><td>150</td><td>120</td><td>000000</td></tr>
+                    <tr><td style="text-align: left;">Alicante</td><td>30</td><td>69</td><td>180</td><td>211</td><td>FF0000</td></tr>
+                    <tr><td style="text-align: left;">Badajoz</td><td>35</td><td>30</td><td>50</td><td>150</td><td>00FF00</td></tr>
+                    <tr><td style="text-align: left;">Burgos</td><td>18</td><td>42</td><td>211</td><td>180</td><td>0000FF</td></tr>
+                    <tr><td style="text-align: left;">Córdoba</td><td>35</td><td>41</td><td>150</td><td>50</td><td>FFFFFF</td></tr>
+                </tbody>
+            </table>
+            <table id="tabla-verano" class="mi-tabla">
+                <thead>
+                    <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td style="text-align: left;">Alcalá de H.</td><td>36</td><td>30</td><td>140</td><td>250</td><td>FFA500</td></tr>
+                    <tr><td style="text-align: left;">Alicante</td><td>38</td><td>75</td><td>200</td><td>280</td><td>FF4500</td></tr>
+                    <tr><td style="text-align: left;">Badajoz</td><td>42</td><td>20</td><td>60</td><td>260</td><td>FFD700</td></tr>
+                    <tr><td style="text-align: left;">Burgos</td><td>28</td><td>35</td><td>190</td><td>220</td><td>FF8C00</td></tr>
+                    <tr><td style="text-align: left;">Córdoba</td><td>45</td><td>25</td><td>130</td><td>290</td><td>FFFF00</td></tr>
+                </tbody>
+            </table>
+            <table id="tabla-otono" class="mi-tabla">
+                <thead>
+                    <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td style="text-align: left;">Alcalá de H.</td><td>15</td><td>65</td><td>160</td><td>90</td><td>8B4513</td></tr>
+                    <tr><td style="text-align: left;">Alicante</td><td>22</td><td>70</td><td>170</td><td>110</td><td>A0522D</td></tr>
+                    <tr><td style="text-align: left;">Badajoz</td><td>18</td><td>55</td><td>55</td><td>100</td><td>CD853F</td></tr>
+                    <tr><td style="text-align: left;">Burgos</td><td>10</td><td>80</td><td>200</td><td>70</td><td>D2691E</td></tr>
+                    <tr><td style="text-align: left;">Córdoba</td><td>20</td><td>60</td><td>140</td><td>95</td><td>8B0000</td></tr>
+                </tbody>
+            </table>
+            <table id="tabla-invierno" class="mi-tabla">
+                <thead>
+                    <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td style="text-align: left;">Alcalá de H.</td><td>5</td><td>85</td><td>130</td><td>50</td><td>ADD8E6</td></tr>
+                    <tr><td style="text-align: left;">Alicante</td><td>12</td><td>65</td><td>150</td><td>80</td><td>87CEFA</td></tr>
+                    <tr><td style="text-align: left;">Badajoz</td><td>8</td><td>75</td><td>45</td><td>60</td><td>B0C4DE</td></tr>
+                    <tr><td style="text-align: left;">Burgos</td><td>-2</td><td>90</td><td>180</td><td>40</td><td>E0FFFF</td></tr>
+                    <tr><td style="text-align: left;">Córdoba</td><td>9</td><td>80</td><td>120</td><td>65</td><td>4682B4</td></tr>
+                </tbody>
+            </table>
+            <div class="paginacion">
+                <button class="btn-pagina activa" data-objetivo="#tabla-primavera">Primavera</button>
+                <button class="btn-pagina" data-objetivo="#tabla-verano">Verano</button>
+                <button class="btn-pagina" data-objetivo="#tabla-otono">Otoño</button>
+                <button class="btn-pagina" data-objetivo="#tabla-invierno">Invierno</button>
+            </div>
+    </div>
+            <div>
+            <footer class="Universidad">
+                <a href="index.html"> Universidad de Alcala</a>
+            </footer>      
+        </div>
+    <script>
+        $(document).ready(function() {
+            
+            // Cuando se hace clic en cualquier botón de página...
+            $('.btn-pagina').click(function() {
+                
+                // 1. Quitar la clase 'activa' de todos los botones y ponérsela solo al pulsado
+                $('.btn-pagina').removeClass('activa');
+                $(this).addClass('activa');
 
-    </table>
+                // 2. Ocultar absolutamente todas las tablas a la vez usando su clase común
+                $('.mi-tabla').hide();
+
+                // 3. Leer qué tabla quiere ver el usuario (buscamos el valor de data-objetivo)
+                let tablaAMostrar = $(this).attr('data-objetivo');
+                
+                // 4. Mostrar solo la tabla seleccionada
+                $(tablaAMostrar).show();
+            });
+
+        });
+    </script>
 </body>
+</html>
