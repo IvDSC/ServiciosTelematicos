@@ -17,6 +17,7 @@
                                 <option value="Alemania">
                                 <option value="Portugal">
                 </datalist>
+                <datalist id="ciudades"></datalist>
                 <form>
                     <section class="formulario">
                         <a href="https://maps.google.com" target="_blank">Datos de la habitación</a>
@@ -24,7 +25,7 @@
                             <li><label for="pais">Pais: </label>
                             <input id="pais" type="text" name="pais" list="paises"></li>
                                 <li><label for="ciudad">Ciudad: </label>
-                                <input id="ciudad" type="text" name="ciudad"><button id="botonciudad" type="button" onclick="abrirMapsCiudad();"> => </button></li>
+                                <input id="ciudad" type="text" name="ciudad" list="ciudades"><button id="botonciudad" type="button" onclick="abrirMapsCiudad();"> => </button></li>
                                 <li><label for="coordenadas">Coordenadas GPS:</label>
                                 <input id="coordenadas" type="text" name="coordenadas"> <button id="botoncoords" type="button" onclick="abrirMaps();"> => </button></li>
                                 <li><label for="url">URL: </label>
@@ -69,6 +70,7 @@
                     
                 </footer>
             </div>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="datos.js"></script>
     </body>
 </html>

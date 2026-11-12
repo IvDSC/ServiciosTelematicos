@@ -1,0 +1,7 @@
+[
+    {"ciudad": "Alcalá de H.", "temperatura": 5, "humedad": 85, "ruido": 130, "luz": 50, "color": "ADD8E6"},
+    {"ciudad": "Alicante", "temperatura": 12, "humedad": 65, "ruido": 150, "luz": 80, "color": "87CEFA"},
+    {"ciudad": "Badajoz", "temperatura": 8, "humedad": 75, "ruido": 45, "luz": 60, "color": "B0C4DE"},
+    {"ciudad": "Burgos", "temperatura": -2, "humedad": 90, "ruido": 180, "luz": 40, "color": "E0FFFF"},
+    {"ciudad": "Córdoba", "temperatura": 9, "humedad": 80, "ruido": 120, "luz": 65, "color": "4682B4"}
+]

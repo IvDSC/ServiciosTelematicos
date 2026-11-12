@@ -358,7 +358,16 @@
                 color: white;
                 width: 100%;
             }
-            body {
+            .info{
+                display:none;
+                background-color: lightgreen;
+                margin: 5px;
+                border: 4px solid darkgreen;
+                text-align: center;
+                height: auto;
+                
+            }
+                        body {
             font-family: Arial, sans-serif;
             margin: 20px;
             }
@@ -366,19 +375,19 @@
                 width: 100%;
                 border-collapse: collapse;
                 text-align: center;
-                border: 1px solid black;
+                
                 margin-bottom: 20px;
             }
             td {
                 padding: 10px;
-                border-right: 1px solid #ddd;
+                
             }
             th {
                 background-color: #ffffff;
                 border-bottom: 2px solid black;
                 font-weight: bold;
                 padding: 10px;
-                border-right: 1px solid #ddd;
+                
             }
             tr:nth-child(odd) {
                 background-color: #0f5a00;
@@ -408,4 +417,15 @@
                 background-color: #8faadc;
                 color: #1f497d;
                 font-style: italic;
+            }
+            .Fondo2{
+                background-color: lightgreen;
+                border: 4px solid darkgreen;
+                overflow: hidden;
+                text-align: center;
+                margin: 5px;
+                flex-direction:column;
+                height: auto;
+                display:flex;
+                align-items: center;
             }

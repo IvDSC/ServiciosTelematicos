@@ -409,7 +409,165 @@ function botonizquierdo(){
         imagenes[contador].show();
     }
 }
+$(document).ready(function() {
+    mostrarinformacionimagen(); 
+    $("#pais").on("input change", function() {
+        let paisTexto = $(this).val().toLowerCase().trim();
+        cargarCiudades(paisTexto);
+    });
+    aplicarFormato("#tabla-primavera");
+            aplicarFormato("#tabla-verano");
+            $('.btn-pagina').click(function() {
+                $('.btn-pagina').removeClass('activa');
+                $(this).addClass('activa');
+                $('.mi-tabla').hide();
+                let tablaAMostrar = $(this).attr('data-objetivo');
+                if (tablaAMostrar === "#tabla-otono") {
+                cargarXML();
+                } else if (tablaAMostrar === "#tabla-invierno") {
+                cargarJSON();
+                }
+            $(tablaAMostrar).show();
+            });
+});
 function mostrarinformacionimagen(){
-    let imagenes = [$("#img-invierno"), $("#img-primavera"), $("#img-verano"), $("#img-otoño"), $("#img-lluvia")];
-
+    let imagenes = $("#img-invierno, #img-primavera, #img-verano, #img-otoño, #img-lluvia");
+    imagenes.mouseenter(function() {
+        switch(this.id){
+            case "img-invierno":
+                $(this).css("border-radius", "50%");
+                $("#informacion").text("Invierno");
+                $(".info").show();
+                break;  
+            case "img-primavera":
+                $(this).css("border-radius", "50%");
+                $("#informacion").text("Primavera");     
+                $(".info").show();   
+                break;
+            case "img-verano":
+                $(this).css("border-radius", "50%");
+                $("#informacion").text("Verano");
+                $(".info").show();
+                break;
+            case "img-otoño":
+                $(this).css("border-radius", "50%");
+                $("#informacion").text("Otoño");
+                $(".info").show();
+                break;
+            case "img-lluvia":
+                $(this).css("border-radius", "50%");
+                $("#informacion").text("Lluvia");
+                $(".info").show();
+                break;
+        }
+    }); 
+    imagenes.mouseleave(function() {
+        switch(this.id){
+            case "img-invierno":
+                $(this).css("border-radius", "0");
+                $("#informacion").text("");
+                $(".info").hide();
+                break;  
+            case "img-primavera":
+                $(this).css("border-radius", "0");
+                $("#informacion").text("");
+                $(".info").hide();
+                break;
+            case "img-verano":
+                $(this).css("border-radius", "0");
+                $("#informacion").text("");
+                $(".info").hide();
+                break;
+            case "img-otoño":
+                $(this).css("border-radius", "0");
+                $("#informacion").text("");
+                $(".info").hide();
+                break;
+            case "img-lluvia":
+                $(this).css("border-radius", "0");
+                $("#informacion").text("");
+                $(".info").hide();
+                break;
+        }
+    }); 
 }
+function cargarCiudades(pais) {
+    $("#ciudades").empty();
+    if (pais !== "") {
+        let nombreArchivo = pais.toLowerCase().trim();
+        if (nombreArchivo === "españa") {
+            nombreArchivo = "espana";
+        }
+        $.get("ciudades/" + nombreArchivo + ".txt", function(data) {
+            let ciudades = data.split(",");
+            ciudades.forEach(function(ciudad) {
+                let nombreLimpio = ciudad.trim();
+                if (nombreLimpio !== "") {
+                    $("#ciudades").append(`<option value="${nombreLimpio}">`);
+                }
+            });
+        }).fail(function() {
+            console.error("No se encontró el archivo ciudades/" + nombreArchivo + ".txt");
+        });
+    }else{
+        $("#ciudades").empty();
+    }
+}
+function aplicarFormato(selector) {
+        $(selector + " tbody td:first-child").css("text-align", "left");
+        $(selector + " th").css({"background-color": "#ffffff", "border-bottom": "2px solid #ddd"});
+        $(selector + " tbody tr:even").css("background-color", "#0f5a00");
+        $(selector + " tbody tr:odd").css("background-color", "#13ff1b");
+}
+function cargarJSON() {
+    let $tbody = $("#tabla-invierno tbody");
+    if ($tbody.children().length > 0) return; 
+    $.getJSON("xmlyjson/invierno.json", function(data) {
+        let html = "";        
+        
+        $.each(data, function(index, estacion) {
+            html += `<tr>
+                        <td>${estacion.ciudad}</td>
+                        <td>${estacion.temperatura}</td>
+                        <td>${estacion.humedad}</td>
+                        <td>${estacion.ruido}</td>
+                        <td>${estacion.luz}</td>
+                        <td>${estacion.color}</td>
+                     </tr>`;
+        });
+        
+        $tbody.html(html);
+        aplicarFormato("#tabla-invierno");
+    });
+}
+function cargarXML() {
+        let tbody = document.querySelector("#tabla-otono tbody");
+        if (tbody.innerHTML.trim() !== "") return;
+        let xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                let xmlDoc = xmlhttp.responseXML;
+                let estaciones = xmlDoc.getElementsByTagName("estacion");
+                let html = "";       
+                for (let i = 0; i < estaciones.length; i++) {
+                    let ciudad = estaciones[i].getElementsByTagName("ciudad")[0].childNodes[0].nodeValue;
+                    let temp = estaciones[i].getElementsByTagName("temperatura")[0].childNodes[0].nodeValue;
+                    let hum = estaciones[i].getElementsByTagName("humedad")[0].childNodes[0].nodeValue;
+                    let ruido = estaciones[i].getElementsByTagName("ruido")[0].childNodes[0].nodeValue;
+                    let luz = estaciones[i].getElementsByTagName("luz")[0].childNodes[0].nodeValue;
+                    let color = estaciones[i].getElementsByTagName("color")[0].childNodes[0].nodeValue;
+
+                    html += `<tr><td>${ciudad}</td><td>${temp}</td><td>${hum}</td><td>${ruido}</td><td>${luz}</td><td>${color}</td></tr>`;
+                }
+                tbody.innerHTML = html;
+                aplicarFormato("#tabla-otono");
+            }
+        };
+        xmlhttp.open("GET", "xmlyjson/otono.xml", true);
+        xmlhttp.send();
+    }

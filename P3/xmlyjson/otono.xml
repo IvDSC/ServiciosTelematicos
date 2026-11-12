@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<estaciones>
+    <estacion>
+        <ciudad>Alcalá de H.</ciudad>
+        <temperatura>15</temperatura>
+        <humedad>65</humedad>
+        <ruido>160</ruido>
+        <luz>90</luz>
+        <color>8B4513</color>
+    </estacion>
+    <estacion>
+        <ciudad>Alicante</ciudad>
+        <temperatura>22</temperatura>
+        <humedad>70</humedad>
+        <ruido>170</ruido>
+        <luz>110</luz>
+        <color>A0522D</color>
+    </estacion>
+    <estacion>
+        <ciudad>Badajoz</ciudad>
+        <temperatura>18</temperatura>
+        <humedad>55</humedad>
+        <ruido>55</ruido>
+        <luz>100</luz>
+        <color>CD853F</color>
+    </estacion>
+    <estacion>
+        <ciudad>Burgos</ciudad>
+        <temperatura>10</temperatura>
+        <humedad>80</humedad>
+        <ruido>200</ruido>
+        <luz>70</luz>
+        <color>D2691E</color>
+    </estacion>
+    <estacion>
+        <ciudad>Córdoba</ciudad>
+        <temperatura>20</temperatura>
+        <humedad>60</humedad>
+        <ruido>140</ruido>
+        <luz>95</luz>
+        <color>8B0000</color>
+    </estacion>
+</estaciones>
