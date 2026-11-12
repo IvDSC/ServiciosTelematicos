@@ -411,7 +411,7 @@ function botonizquierdo(){
 }
 $(document).ready(function() {
     mostrarinformacionimagen(); 
-    $("#pais").on("input change", function() {
+    $("#pais").on("input", function() {
         let paisTexto = $(this).val().toLowerCase().trim();
         cargarCiudades(paisTexto);
     });
