@@ -571,17 +571,3 @@ function cargarXML() {
         xmlhttp.open("GET", "xmlyjson/otono.xml", true);
         xmlhttp.send();
     }
-    $(document).ready(function() {
-    $('.btn-pagina').click(function() {
-        $('.btn-pagina').removeClass('activa');
-        $(this).addClass('activa');
-        $('.mi-tabla').hide();
-        let tablaAMostrar = $(this).attr('data-objetivo');
-        $(tablaAMostrar).show();
-        $(tablaAMostrar + ' tbody tr:odd').css('background-color', '#0f5a00');
-        $(tablaAMostrar + ' tbody tr:even').css('background-color', '#13ff1b');
-        $(tablaAMostrar + ' tbody tr').css('color', 'black');
-        $(tablaAMostrar + ' tbody td:first-child').css('text-align', 'left');
-    });
-    $('.btn-pagina').first().click();
-});
