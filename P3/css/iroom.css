@@ -431,3 +431,36 @@
                 display:flex;
                 align-items: center;
             }
+            #contenedor-histograma {
+                background-color: white;
+                border: 1px solid black; 
+                width: 90%;
+                margin: 20px auto;
+                padding: 15px;
+                box-sizing: border-box;
+            }
+            #titulo-histograma {
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 20px;
+                font-weight: normal;
+            }
+            .fila-histograma {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .etiqueta-ciudad {
+                width: 150px;
+                text-align: left;
+                font-size: 14px;
+            }
+            .barra-contenedor {
+                flex-grow: 1;
+            }
+            .barra {
+                height: 25px;
+                background-color: lightgreen;
+                border: 1px solid darkgreen;
+                transition: width 0.4s ease-in-out;
+            }

@@ -15,6 +15,14 @@
             <table id="tabla-primavera" class="mi-tabla">
                 <thead>
                     <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                    <tr class="fila-checkboxes">
+                        <th style="text-align: left;">Mostrar histograma</th>
+                        <th><input type="checkbox" class="check-hist" data-col="1" data-titulo="Temperatura (º)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="2" data-titulo="Humedad (%)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="3" data-titulo="Ruido"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="4" data-titulo="Nivel de luz"></th>
+                        <th>-</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr><td>Alcalá de H.</td><td>25</td><td>48</td><td>150</td><td>120</td><td>000000</td></tr>
@@ -27,6 +35,14 @@
             <table id="tabla-verano" class="mi-tabla">
                 <thead>
                     <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                    <tr class="fila-checkboxes">
+                        <th style="text-align: left;">Mostrar histograma</th>
+                        <th><input type="checkbox" class="check-hist" data-col="1" data-titulo="Temperatura (º)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="2" data-titulo="Humedad (%)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="3" data-titulo="Ruido"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="4" data-titulo="Nivel de luz"></th>
+                        <th>-</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr><td>Alcalá de H.</td><td>36</td><td>30</td><td>140</td><td>250</td><td>FFA500</td></tr>
@@ -39,6 +55,14 @@
             <table id="tabla-otono" class="mi-tabla">
                 <thead>
                     <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                    <tr class="fila-checkboxes">
+                        <th style="text-align: left;">Mostrar histograma</th>
+                        <th><input type="checkbox" class="check-hist" data-col="1" data-titulo="Temperatura (º)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="2" data-titulo="Humedad (%)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="3" data-titulo="Ruido"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="4" data-titulo="Nivel de luz"></th>
+                        <th>-</th>
+                    </tr>
                 </thead>
                 <tbody>
                   
@@ -47,11 +71,23 @@
             <table id="tabla-invierno" class="mi-tabla">
                 <thead>
                     <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                    <tr class="fila-checkboxes">
+                        <th style="text-align: left;">Mostrar histograma</th>
+                        <th><input type="checkbox" class="check-hist" data-col="1" data-titulo="Temperatura (º)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="2" data-titulo="Humedad (%)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="3" data-titulo="Ruido"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="4" data-titulo="Nivel de luz"></th>
+                        <th>-</th>
+                    </tr>
                 </thead>
                 <tbody>
                 
                 </tbody>
             </table>
+            <div id="contenedor-histograma" style="display: none;">
+                <h3 id="titulo-histograma"></h3>
+                <div id="barras-histograma"></div>
+            </div>
             <div class="paginacion">
                 <button class="btn-pagina activa" data-objetivo="#tabla-primavera" data-nombre="Primavera">
                     <i class="fa-solid fa-seedling"></i> Primavera

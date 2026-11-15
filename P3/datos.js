@@ -415,20 +415,34 @@ $(document).ready(function() {
         let paisTexto = $(this).val().toLowerCase().trim();
         cargarCiudades(paisTexto);
     });
+    $(document).on('change', '.check-hist', function() {
+        let estaMarcado = $(this).is(':checked');
+        $('.check-hist').prop('checked', false);
+        if (estaMarcado) {
+            $(this).prop('checked', true);
+            let columna = $(this).attr('data-col');
+            let titulo = $(this).attr('data-titulo');
+            generarHistograma(columna, titulo);
+        } else {
+            $('#contenedor-histograma').hide();
+        }
+    });
     aplicarFormato("#tabla-primavera");
-            aplicarFormato("#tabla-verano");
-            $('.btn-pagina').click(function() {
-                $('.btn-pagina').removeClass('activa');
-                $(this).addClass('activa');
-                $('.mi-tabla').hide();
-                let tablaAMostrar = $(this).attr('data-objetivo');
-                if (tablaAMostrar === "#tabla-otono") {
-                cargarXML();
-                } else if (tablaAMostrar === "#tabla-invierno") {
-                cargarJSON();
-                }
-            $(tablaAMostrar).show();
-            });
+    aplicarFormato("#tabla-verano");
+    $('.btn-pagina').click(function() {
+        $('.btn-pagina').removeClass('activa');
+        $(this).addClass('activa');
+        $('.mi-tabla').hide();
+        let tablaAMostrar = $(this).attr('data-objetivo');
+        if (tablaAMostrar === "#tabla-otono") {
+            cargarXML();
+        } else if (tablaAMostrar === "#tabla-invierno") {
+            cargarJSON();
+        }
+        $(tablaAMostrar).show();
+        $('.check-hist').prop('checked', false);
+        $('#contenedor-histograma').hide();
+    });
 });
 function mostrarinformacionimagen(){
     let imagenes = $("#img-invierno, #img-primavera, #img-verano, #img-otoño, #img-lluvia");
@@ -571,3 +585,34 @@ function cargarXML() {
         xmlhttp.open("GET", "xmlyjson/otono.xml", true);
         xmlhttp.send();
     }
+function generarHistograma(indiceColumna, titulo) {
+    let tablaActiva = $('.mi-tabla:visible');
+    let filas = tablaActiva.find('tbody tr');
+    let datos = [];
+    let maxValor = 0;
+    filas.each(function() {
+        let ciudad = $(this).find('td').eq(0).text();
+        let valorStr = $(this).find('td').eq(indiceColumna).text();
+        let valor = parseFloat(valorStr);
+        if (!isNaN(valor)) {
+            datos.push({ ciudad: ciudad, valor: valor });
+            if (Math.abs(valor) > maxValor) {
+                maxValor = Math.abs(valor);
+            }
+        }
+    });
+    $('#titulo-histograma').text(titulo);
+    let htmlBarras = '';
+    datos.forEach(function(item) {
+        let anchoPorcentaje = (maxValor > 0) ? (Math.abs(item.valor) / maxValor) * 100 : 0;
+        htmlBarras += `
+        <div class="fila-histograma">
+            <div class="etiqueta-ciudad">${item.ciudad}</div>
+            <div class="barra-contenedor">
+                <div class="barra" style="width: ${anchoPorcentaje}%;"></div>
+            </div>
+        </div>`;
+    });
+    $('#barras-histograma').html(htmlBarras);
+    $('#contenedor-histograma').fadeIn(300);
+}
