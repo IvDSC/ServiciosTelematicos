@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tablas</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/iroom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <div id="header">
+        <h1 class="Título">Tablas de Ciudades Españolas</h1>
+        <div class="Fondo2">
+            <table id="tabla-primavera" class="mi-tabla">
+                <thead>
+                    <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                    <tr class="fila-checkboxes">
+                        <th style="text-align: left;">Mostrar histograma</th>
+                        <th><input type="checkbox" class="check-hist" data-col="1" data-titulo="Temperatura (º)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="2" data-titulo="Humedad (%)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="3" data-titulo="Ruido"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="4" data-titulo="Nivel de luz"></th>
+                        <th>-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Alcalá de H.</td><td>25</td><td>48</td><td>150</td><td>120</td><td>000000</td></tr>
+                    <tr><td>Alicante</td><td>30</td><td>69</td><td>180</td><td>211</td><td>FF0000</td></tr>
+                    <tr><td>Badajoz</td><td>35</td><td>30</td><td>50</td><td>150</td><td>00FF00</td></tr>
+                    <tr><td>Burgos</td><td>18</td><td>42</td><td>211</td><td>180</td><td>0000FF</td></tr>
+                    <tr><td>Córdoba</td><td>35</td><td>41</td><td>150</td><td>50</td><td>FFFFFF</td></tr>
+                </tbody>
+            </table>
+            <table id="tabla-verano" class="mi-tabla">
+                <thead>
+                    <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                    <tr class="fila-checkboxes">
+                        <th style="text-align: left;">Mostrar histograma</th>
+                        <th><input type="checkbox" class="check-hist" data-col="1" data-titulo="Temperatura (º)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="2" data-titulo="Humedad (%)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="3" data-titulo="Ruido"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="4" data-titulo="Nivel de luz"></th>
+                        <th>-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Alcalá de H.</td><td>36</td><td>30</td><td>140</td><td>250</td><td>FFA500</td></tr>
+                    <tr><td>Alicante</td><td>38</td><td>75</td><td>200</td><td>280</td><td>FF4500</td></tr>
+                    <tr><td>Badajoz</td><td>42</td><td>20</td><td>60</td><td>260</td><td>FFD700</td></tr>
+                    <tr><td>Burgos</td><td>28</td><td>35</td><td>190</td><td>220</td><td>FF8C00</td></tr>
+                    <tr><td>Córdoba</td><td>45</td><td>25</td><td>130</td><td>290</td><td>FFFF00</td></tr>
+                </tbody>
+            </table>
+            <table id="tabla-otono" class="mi-tabla">
+                <thead>
+                    <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                    <tr class="fila-checkboxes">
+                        <th style="text-align: left;">Mostrar histograma</th>
+                        <th><input type="checkbox" class="check-hist" data-col="1" data-titulo="Temperatura (º)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="2" data-titulo="Humedad (%)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="3" data-titulo="Ruido"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="4" data-titulo="Nivel de luz"></th>
+                        <th>-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+            </table>
+            <table id="tabla-invierno" class="mi-tabla">
+                <thead>
+                    <tr><th>Ciudad</th><th>Temperatura (º)</th><th>Humedad (%)</th><th>Ruido</th><th>Nivel de luz</th><th>Color de Iluminación</th></tr>
+                    <tr class="fila-checkboxes">
+                        <th style="text-align: left;">Mostrar histograma</th>
+                        <th><input type="checkbox" class="check-hist" data-col="1" data-titulo="Temperatura (º)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="2" data-titulo="Humedad (%)"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="3" data-titulo="Ruido"></th>
+                        <th><input type="checkbox" class="check-hist" data-col="4" data-titulo="Nivel de luz"></th>
+                        <th>-</th>
+                    </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+            </table>
+            <div id="contenedor-histograma" style="display: none;">
+                <h3 id="titulo-histograma"></h3>
+                <div id="barras-histograma"></div>
+            </div>
+            <div class="paginacion">
+                <button class="btn-pagina activa" data-objetivo="#tabla-primavera" data-nombre="Primavera">
+                    <i class="fa-solid fa-seedling"></i> Primavera
+                </button>
+                <button class="btn-pagina" data-objetivo="#tabla-verano" data-nombre="Verano">
+                    <i class="fa-solid fa-sun"></i> Verano
+                </button>
+                <button class="btn-pagina" data-objetivo="#tabla-otono" data-nombre="Otoño">
+                    <i class="fa-brands fa-canadian-maple-leaf"></i> Otoño
+                </button>
+                <button class="btn-pagina" data-objetivo="#tabla-invierno" data-nombre="Invierno">
+                    <i class="fa-regular fa-snowflake"></i> Invierno
+                </button>
+            </div>
+    </div>
+            <div>
+            <footer class="Universidad">
+                <a href="index.html"> Universidad de Alcala</a>
+            </footer>      
+        </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="datos.js"></script>
+</body>
+</html>

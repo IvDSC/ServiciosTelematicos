@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Calculadora de Temperaturas</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/iroom.css">
+</head>
+<body>
+    <div id="header">
+        <h1 class="Título">Calculadora de Temperatura</h1>
+        <div class="texto-columnas">
+            <div>
+                <h2>Funcionalidad</h2>
+                <ul class="letra">
+                    <li>Botones númericos: Meten el numero que quieres operar</li>
+                    <li>Sumar (+): Introduces los 2 datos y se suman</li>
+                    <li>Restar (-): Introduces los 2 datos y se restan</li>
+                    <li>Multiplicar (*): Introduces los 2 datos y se multiplican</li>
+                    <li>Dividir (/): El primer numero que se introduce se divide por el segundo</li>
+                    <li>Al cuadrado (x²): El numero que quieres operar multiplicado por si mismo</li>
+                    <li>K: Convierte el numero en Grados Kelvin</li>
+                    <li>c: Convierte el numero en Grados Centígrados</li>
+                    <li>F: Convierte el numero en Grados Fahrenheit</li>
+                    <li>Igual (=): Muestra el resultado de la operación realizada</li>
+                    <li>Borrar (Borrar): Elimina el resultado de la operación anterior</li>
+            </div>
+                <div class="calculadora">
+                <input type="text" id="pantalla" readonly>
+                <div class="fila">
+                    <button class="button-numero" onclick="Numerointroducido('7')">7</button>
+                    <button class="button-numero" onclick="Numerointroducido('8')">8</button>
+                    <button class="button-numero" onclick="Numerointroducido('9')">9</button>
+                    <button class="btn-operacion" onclick="Operacion('+')">+</button>
+                </div>
+                <div class="fila">
+                    <button class="button-numero" onclick="Numerointroducido('4')">4</button>
+                    <button class="button-numero" onclick="Numerointroducido('5')">5</button>
+                    <button class="button-numero" onclick="Numerointroducido('6')">6</button>
+                    <button class="btn-operacion" onclick="Operacion('-')">-</button>
+                </div>
+                <div class="fila">
+                    <button class="button-numero" onclick="Numerointroducido('1')">1</button>
+                    <button class="button-numero" onclick="Numerointroducido('2')">2</button>
+                    <button class="button-numero" onclick="Numerointroducido('3')">3</button>
+                    <button class="btn-operacion" onclick="Operacion('*')">*</button>
+                </div>
+                <div class="fila">
+                    <button class="button-numero" onclick="Numerointroducido('.')">.</button>
+                    <button class="button-numero" onclick="Numerointroducido('0')">0</button>
+                    <button class="btn-operacion" onclick="Calcular()">=</button>
+                    <button class="btn-operacion" onclick="Operacion('/')">/</button>
+                </div>
+                <div class="fila">
+                    <button class="btn-operacion" onclick="Operacion('^')">x²</button>
+                    <button class="btn-operacion" onclick="CambioaKelvin('K')">K</button>
+                    <button class="btn-operacion" onclick="CambioaFahrenheit('F')">F</button>
+                    <button class="btn-operacion" onclick="CambioaCelsius('C')">C</button>
+                </div>
+                <div class="fila">
+                    <button class="btn-limpiar" onclick="Borrar()">Borrar</button>
+                </div> 
+            </div>
+            <div>
+                <h2>Historial de Temperaturas Calculadas</h2>
+                <ol id="miLista" style="text-align: left"></ol>
+            </div>
+        </div>
+        <footer class="Universidad" id="footer">
+            <a href="index.html"> Universidad de Alcala</a>            
+        </footer>
+    </div>
+    <script src="datos.js"></script>
+</body>
+</html>
