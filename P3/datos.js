@@ -428,19 +428,21 @@ $(document).ready(function() {
         }
     });
     aplicarFormato("#tabla-primavera");
-            aplicarFormato("#tabla-verano");
-            $('.btn-pagina').click(function() {
-                $('.btn-pagina').removeClass('activa');
-                $(this).addClass('activa');
-                $('.mi-tabla').hide();
-                let tablaAMostrar = $(this).attr('data-objetivo');
-                if (tablaAMostrar === "#tabla-otono") {
-                cargarXML();
-                } else if (tablaAMostrar === "#tabla-invierno") {
-                cargarJSON();
-                }
-            $(tablaAMostrar).show();
-            });
+    aplicarFormato("#tabla-verano");
+    $('.btn-pagina').click(function() {
+        $('.btn-pagina').removeClass('activa');
+        $(this).addClass('activa');
+        $('.mi-tabla').hide();
+        let tablaAMostrar = $(this).attr('data-objetivo');
+        if (tablaAMostrar === "#tabla-otono") {
+            cargarXML();
+        } else if (tablaAMostrar === "#tabla-invierno") {
+            cargarJSON();
+        }
+        $(tablaAMostrar).show();
+        $('.check-hist').prop('checked', false);
+        $('#contenedor-histograma').hide();
+    });
 });
 function mostrarinformacionimagen(){
     let imagenes = $("#img-invierno, #img-primavera, #img-verano, #img-otoño, #img-lluvia");
