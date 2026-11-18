@@ -415,6 +415,18 @@ $(document).ready(function() {
         let paisTexto = $(this).val().toLowerCase().trim();
         cargarCiudades(paisTexto);
     });
+     $(document).on('change', '.check-hist', function() {
+        let estaMarcado = $(this).is(':checked');
+        $('.check-hist').prop('checked', false);
+        if (estaMarcado) {
+            $(this).prop('checked', true);
+            let columna = $(this).attr('data-col');
+            let titulo = $(this).attr('data-titulo');
+            generarHistograma(columna, titulo);
+        } else {
+            $('#contenedor-histograma').hide();
+        }
+    });
     aplicarFormato("#tabla-primavera");
             aplicarFormato("#tabla-verano");
             $('.btn-pagina').click(function() {
@@ -432,63 +444,25 @@ $(document).ready(function() {
 });
 function mostrarinformacionimagen(){
     let imagenes = $("#img-invierno, #img-primavera, #img-verano, #img-otoño, #img-lluvia");
+    let datosAPI = {};
+
+    $.getJSON("http://192.168.229.1:3000/api/climas", function(datos) {
+        datosAPI = datos;
+        $.each(datos, function(id, info) {
+            $("#" + id).attr("src", info.src);
+        });
+    });
     imagenes.mouseenter(function() {
-        switch(this.id){
-            case "img-invierno":
-                $(this).css("border-radius", "50%");
-                $("#informacion").text("Invierno");
-                $(".info").show();
-                break;  
-            case "img-primavera":
-                $(this).css("border-radius", "50%");
-                $("#informacion").text("Primavera");     
-                $(".info").show();   
-                break;
-            case "img-verano":
-                $(this).css("border-radius", "50%");
-                $("#informacion").text("Verano");
-                $(".info").show();
-                break;
-            case "img-otoño":
-                $(this).css("border-radius", "50%");
-                $("#informacion").text("Otoño");
-                $(".info").show();
-                break;
-            case "img-lluvia":
-                $(this).css("border-radius", "50%");
-                $("#informacion").text("Lluvia");
-                $(".info").show();
-                break;
-        }
-    }); 
+        $(this).css("border-radius", "50%");
+        let texto = datosAPI[this.id] ? datosAPI[this.id].texto : $(this).attr("alt");
+        $("#informacion").text(texto);
+        $(".info").show();
+    });
+
     imagenes.mouseleave(function() {
-        switch(this.id){
-            case "img-invierno":
-                $(this).css("border-radius", "0");
-                $("#informacion").text("");
-                $(".info").hide();
-                break;  
-            case "img-primavera":
-                $(this).css("border-radius", "0");
-                $("#informacion").text("");
-                $(".info").hide();
-                break;
-            case "img-verano":
-                $(this).css("border-radius", "0");
-                $("#informacion").text("");
-                $(".info").hide();
-                break;
-            case "img-otoño":
-                $(this).css("border-radius", "0");
-                $("#informacion").text("");
-                $(".info").hide();
-                break;
-            case "img-lluvia":
-                $(this).css("border-radius", "0");
-                $("#informacion").text("");
-                $(".info").hide();
-                break;
-        }
+        $(this).css("border-radius", "0");
+        $("#informacion").text("");
+        $(".info").hide();
     }); 
 }
 function cargarCiudades(pais) {
@@ -498,8 +472,8 @@ function cargarCiudades(pais) {
         if (nombreArchivo === "españa") {
             nombreArchivo = "espana";
         }
-        $.get("ciudades/" + nombreArchivo + ".txt", function(data) {
-            let ciudades = data.split(",");
+        $.get("ciudades/" + nombreArchivo + ".txt", function(ciudadestxt) {
+            let ciudades = ciudadestxt.split(",");
             ciudades.forEach(function(ciudad) {
                 let nombreLimpio = ciudad.trim();
                 if (nombreLimpio !== "") {
@@ -524,7 +498,6 @@ function cargarJSON() {
     if ($tbody.children().length > 0) return; 
     $.getJSON("xmlyjson/invierno.json", function(data) {
         let html = "";        
-        
         $.each(data, function(index, estacion) {
             html += `<tr>
                         <td>${estacion.ciudad}</td>
@@ -535,7 +508,6 @@ function cargarJSON() {
                         <td>${estacion.color}</td>
                      </tr>`;
         });
-        
         $tbody.html(html);
         aplicarFormato("#tabla-invierno");
     });
@@ -543,12 +515,7 @@ function cargarJSON() {
 function cargarXML() {
         let tbody = document.querySelector("#tabla-otono tbody");
         if (tbody.innerHTML.trim() !== "") return;
-        let xmlhttp;
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
+        let xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 let xmlDoc = xmlhttp.responseXML;
@@ -571,3 +538,34 @@ function cargarXML() {
         xmlhttp.open("GET", "xmlyjson/otono.xml", true);
         xmlhttp.send();
     }
+    function generarHistograma(indiceColumna, titulo) {
+    let tablaActiva = $('.mi-tabla:visible');
+    let filas = tablaActiva.find('tbody tr');
+    let datos = [];
+    let maxValor = 0;
+    filas.each(function() {
+        let ciudad = $(this).find('td').eq(0).text();
+        let valorStr = $(this).find('td').eq(indiceColumna).text();
+        let valor = parseFloat(valorStr);
+        if (!isNaN(valor)) {
+            datos.push({ ciudad: ciudad, valor: valor });
+            if (Math.abs(valor) > maxValor) {
+                maxValor = Math.abs(valor);
+            }
+        }
+    });
+    $('#titulo-histograma').text(titulo);
+    let htmlBarras = '';
+    datos.forEach(function(item) {
+        let anchoPorcentaje = (maxValor > 0) ? (Math.abs(item.valor) / maxValor) * 100 : 0;
+        htmlBarras += `
+        <div class="fila-histograma">
+            <div class="etiqueta-ciudad">${item.ciudad}</div>
+            <div class="barra-contenedor">
+                <div class="barra" style="width: ${anchoPorcentaje}%;"></div>
+            </div>
+        </div>`;
+    });
+    $('#barras-histograma').html(htmlBarras);
+    $('#contenedor-histograma').fadeIn(300);
+}

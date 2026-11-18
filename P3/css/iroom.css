@@ -367,7 +367,7 @@
                 height: auto;
                 
             }
-                        body {
+            body {
             font-family: Arial, sans-serif;
             margin: 20px;
             }
@@ -375,7 +375,6 @@
                 width: 100%;
                 border-collapse: collapse;
                 text-align: center;
-                
                 margin-bottom: 20px;
             }
             td {
@@ -386,37 +385,40 @@
                 background-color: #ffffff;
                 border-bottom: 2px solid black;
                 font-weight: bold;
-                padding: 10px;
-                
-            }
-            tr:nth-child(odd) {
-                background-color: #0f5a00;
-            }
-            tr:nth-child(even) {
-                background-color: #13ff1b;
+                padding: 10px;    
             }
             #tabla-verano, #tabla-otono, #tabla-invierno {
                 display: none;
             }
             .paginacion {
                 clear:both;
-                text-align: center;
+                margin-bottom: 10px;
                 display: flex;
                 justify-content: center;
             }
             .btn-pagina {
-                padding: 10px 20px;
-                border: 1px solid black;
+                padding: 0px 30px;
+                border: 2px solid black;
                 background-color: #d9d9d9;
                 cursor: pointer;
                 color: #3b5998;
-                font-weight: bold;
+                font-weight: normal;
+                font-size:18px;
                 margin: 0;
+                box-shadow: 4px 4px 0px black;
+                white-space: nowrap;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                box-sizing: border-box;
+
             }
             .btn-pagina.activa {
                 background-color: #8faadc;
                 color: #1f497d;
                 font-style: italic;
+                font-weight: bold;
             }
             .Fondo2{
                 background-color: lightgreen;
@@ -428,4 +430,37 @@
                 height: auto;
                 display:flex;
                 align-items: center;
+            }
+            #contenedor-histograma {
+                background-color: white;
+                border: 1px solid black; 
+                width: 90%;
+                margin: 20px auto;
+                padding: 15px;
+                box-sizing: border-box;
+            }
+            #titulo-histograma {
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 20px;
+                font-weight: normal;
+            }
+            .fila-histograma {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .etiqueta-ciudad {
+                width: 150px;
+                text-align: left;
+                font-size: 14px;
+            }
+            .barra-contenedor {
+                flex-grow: 1;
+            }
+            .barra {
+                height: 25px;
+                background-color: lightgreen;
+                border: 1px solid darkgreen;
+                transition: width 0.4s ease-in-out;
             }
